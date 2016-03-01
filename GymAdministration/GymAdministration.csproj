@@ -72,6 +72,7 @@
     <Compile Include="DataBase\Coach.cs" />
     <Compile Include="DataBase\Context.cs" />
     <Compile Include="DataBase\Manager.cs" />
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
