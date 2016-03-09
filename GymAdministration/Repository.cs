@@ -25,6 +25,7 @@ namespace GymAdministration
             {
                 c.Clients.AddOrUpdate(cl => cl.LastName,
                     new Client { FirstName = firstName, LastName = lastName, BirthDate = birthDate, DateOfValidityStart = dateOfValidityStart, DateOfValidityFinish = dateOfValidityFinish });
+                c.SaveChanges();
             }
         }
 
@@ -34,7 +35,9 @@ namespace GymAdministration
             {
                 c.Clients.AddOrUpdate(cl => cl.LastName,
                     new Client { FirstName = firstName, LastName = lastName, BirthDate = birthDate, DateOfValidityStart = dateOfValidityStart, DateOfValidityFinish = dateOfValidityFinish, PhoneNumber = phoneNumber });
+                c.SaveChanges();
             }
+
         }
 
        public List<Client> FindAllClientsByLastName(string lastName)
