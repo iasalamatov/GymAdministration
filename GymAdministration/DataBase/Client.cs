@@ -28,6 +28,7 @@ namespace GymAdministration
         public bool IsHere { get; set; }
      //   [Required]
      //   public Image Photo { get; set; }
+        public Manager Manager { get; set; }
         public Coach Coach { get; set; }
     }
 }
