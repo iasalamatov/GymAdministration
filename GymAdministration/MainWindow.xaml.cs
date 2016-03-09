@@ -31,12 +31,19 @@ namespace GymAdministration
 
         private void buttonIdFind_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.FindById();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        
 
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.AddNew();
+        }
+
+        private void buttonNameFind_Click(object sender, RoutedEventArgs e)
+        {
+           // _viewModel.FindByName();
         }
         
     }
