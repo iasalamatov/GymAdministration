@@ -52,6 +52,41 @@ namespace GymAdministration
            }
        }
 
+        // Все манагеры
+        public List<Manager> AllManagers()
+       {
+            using (var c = new Context())
+            {
+                var managers = c.Managers.ToList();
+                return managers;
+            }
+       }
+
+        // Все тренеры
+        public List<Coach> AllCoaches()
+        {
+            using (var c = new Context())
+            {
+                var coaches = c.Coaches.ToList();
+                return coaches;
+            }
+        }
      
+        // внести изменения в клиента
+        public void EditClient(Client client, string firstName, string lastName, DateTime birthDate, DateTime dateOfValidityStart, DateTime dateOfValidityFinish, string phoneNumber)
+        {
+            using (var c = new Context())
+            {
+                client.FirstName = firstName;
+                client.LastName = lastName;
+                client.BirthDate = birthDate;
+                client.DateOfValidityStart = dateOfValidityStart;
+                client.DateOfValidityFinish = dateOfValidityFinish;
+                client.PhoneNumber = phoneNumber;
+                c.Clients.AddOrUpdate(p => p.id,
+                    client);
+                c.SaveChanges();
+            }
+        }
     }
 }
