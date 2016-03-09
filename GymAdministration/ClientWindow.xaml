@@ -1,0 +1,53 @@
+﻿<Window x:Class="GymAdministration.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ClientWindow" Height="330" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center">First name</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="1">Last name</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="2">Birthdate</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="3">Date of validity start</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="4">Date of validity finish</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="5">Phone number</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="6">Manager</TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Row="7">Coach</TextBlock>
+
+        <TextBox Grid.Column="1" Text="{Binding Client.FirstName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Client.LastName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding Client.BirthDate}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding Client.DateOfValidityStart}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding Client.DateOfValidityFinish}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
+
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Client.PhoneNumber}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
+        <Expander Grid.Row="6" Grid.Column="1" Margin="5" Header="{Binding Client.Manager}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
+            <ListBox  Name="listBoxAddresses"  MaxHeight="400" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            </ListBox>
+        </Expander>
+
+        <Expander Grid.Row="7" Grid.Column="1" Margin="5" Header="{Binding Client.Coach}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
+            <ListBox  Name="listBoxCouches"  MaxHeight="400" ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+            </ListBox>
+        </Expander>
+
+
+        <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom"  Height="25" Width="120" Click="ButtonEdit_Click" IsEnabled="{Binding IsEnabled2}" >Edit</Button>
+        <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom" Grid.Column="1" Height="25" Width="120" Click="ButtonSave_Click" IsEnabled="{Binding IsEnabled1}" >Save</Button>
+    </Grid>
+</Window>
