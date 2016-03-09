@@ -37,15 +37,21 @@ namespace GymAdministration
             }
         }
 
-      //  public List<Client> FindAllClientsByLastName(string lastName)
-      //  {
-      //      using (var c = new Context())
-      //      {
-      //          List<Client> clnts = from cl in c.Clients
-      //                               where cl.LastName == lastName
-      //                               select cl;
-      //          return clnts;
-      //      }
-      //  }
+       public List<Client> FindAllClientsByLastName(string lastName)
+       {
+           using (var c = new Context())
+           {
+               List<Client> OurClients = new List<Client>();
+               foreach (var item in c.Clients)
+               {
+                   if (item.LastName == lastName)
+                       OurClients.Add(item);
+               }
+
+               return OurClients;
+           }
+       }
+
+     
     }
 }
