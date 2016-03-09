@@ -20,9 +20,24 @@ namespace GymAdministration
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        MainViewModel _viewModel = new MainViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = _viewModel;
         }
+
+        private void buttonIdFind_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
     }
 }

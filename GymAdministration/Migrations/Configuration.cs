@@ -29,6 +29,9 @@ namespace GymAdministration.Migrations
             //
           //  var man = context.Managers.First(m => m.FirstName == "Ilya");
           //  context.Managers.Remove(man);
+               context.Clients.AddOrUpdate(
+                p => p.LastName,
+                new Client { FirstName = "Ilya", LastName = "Salamatov", BirthDate = new DateTime(1994, 4, 4), DateOfValidityStart = new DateTime(2016, 03, 09), DateOfValidityFinish = new DateTime(2017, 03, 09) });
             context.SaveChanges();
         }
     }
