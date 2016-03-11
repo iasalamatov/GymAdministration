@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1"  Orientation="Vertical" Background="#FFD44242">
-            <TextBox Name="textBoxId" Height="20" Margin="5 3"></TextBox>
+            <TextBox Name="textBoxId" Text="{Binding ID}" Height="20" Margin="5 3"></TextBox>
 
             <Button Margin="10 10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonIdFind_Click">Find</Button>
         </StackPanel>

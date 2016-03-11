@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -11,14 +12,12 @@ namespace GymAdministration
     {
         
         private Client _client;
+        public string ID { get; set; }
 
         protected void OnPropertyChanged(string name)
-      {
-          
-          
+      {                   
             if(PropertyChanged!=null)
-              PropertyChanged(this, new PropertyChangedEventArgs(name));
-          
+              PropertyChanged(this, new PropertyChangedEventArgs(name));         
       }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,22 +31,32 @@ namespace GymAdministration
         private void LoadData()
         {
             
-           //
+           //Будет загружаться всякая инфа
         }
 
         public void FindById()
         {
             
-            var repo = new Repository();
-            _client = repo.FindClient(5);
-            if (_client != null)
+            try
             {
-                var window = new ClientWindow(_client);
-                window.ShowDialog();
-            }
-            else
-            {
+                var repo = new Repository();
+
+                _client = repo.FindClient(Int32.Parse(ID));
+                if (_client != null)
+                {
+                    var window = new ClientWindow(_client);
+                    window.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Not found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
