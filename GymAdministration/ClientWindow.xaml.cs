@@ -30,7 +30,7 @@ namespace GymAdministration
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            //_viewModel.E
+            _viewModel.Edit();
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
