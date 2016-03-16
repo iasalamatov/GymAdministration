@@ -15,6 +15,8 @@ namespace GymAdministration.DataBase
 
         public DbSet<Client>  Clients{ get; set; }
 
+        public DbSet<Visit> Visits { get; set; }
+
         public Context() : base("GymAdmin")
         {
 

@@ -64,7 +64,12 @@
     <Compile Include="ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\Visit.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="Migrations\201603162147237_addVisit.cs" />
+    <Compile Include="Migrations\201603162147237_addVisit.Designer.cs">
+      <DependentUpon>201603162147237_addVisit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Page Include="ClientWindow.xaml">
       <SubType>Designer</SubType>
@@ -115,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602290940140_FirstRun1.resx">
       <DependentUpon>201602290940140_FirstRun1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603162147237_addVisit.resx">
+      <DependentUpon>201603162147237_addVisit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

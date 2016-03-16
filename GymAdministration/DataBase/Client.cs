@@ -26,6 +26,8 @@ namespace GymAdministration
         [Required]
         public DateTime DateOfValidityFinish { get; set; }
         public bool IsHere { get; set; }
+
+        public List<Visit> Visits { get; set; }
      //   [Required]
      //   public Image Photo { get; set; }
         public Manager Manager { get; set; }
