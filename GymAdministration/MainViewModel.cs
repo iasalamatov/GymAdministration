@@ -10,15 +10,15 @@ namespace GymAdministration
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        
+
         private Client _client;
         public string ID { get; set; }
 
         protected void OnPropertyChanged(string name)
-      {                   
-            if(PropertyChanged!=null)
-              PropertyChanged(this, new PropertyChangedEventArgs(name));         
-      }
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,13 +30,13 @@ namespace GymAdministration
 
         private void LoadData()
         {
-            
-           //Будет загружаться всякая инфа
+
+            //Будет загружаться всякая инфа
         }
 
         public void FindById()
         {
-            
+
             try
             {
                 var repo = new Repository();
@@ -51,7 +51,7 @@ namespace GymAdministration
                 {
                     MessageBox.Show("Not found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                
+
 
             }
             catch (Exception e)
@@ -66,7 +66,8 @@ namespace GymAdministration
         {
             _client = null;
             var window = new ClientWindow(_client);
-                window.ShowDialog();
+            window.ShowDialog();
         }
     }
 }
+

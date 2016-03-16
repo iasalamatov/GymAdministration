@@ -45,9 +45,8 @@
 
             </ListBox>
         </Expander>
-
-
         <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom"  Height="25" Width="120" Click="ButtonEdit_Click" IsEnabled="{Binding IsEnabled2}" >Edit</Button>
         <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom" Grid.Column="1" Height="25" Width="120" Click="ButtonSave_Click" IsEnabled="{Binding IsEnabled1}" >Save</Button>
     </Grid>
 </Window>
+
