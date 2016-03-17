@@ -37,6 +37,11 @@ namespace GymAdministration
         {
             _viewModel.Save();
         }
+
+        private void ToggleButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Visit();
+        }
     }
 }
 
