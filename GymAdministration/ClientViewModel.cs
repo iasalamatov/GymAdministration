@@ -13,7 +13,7 @@ namespace GymAdministration
     class ClientViewModel : INotifyPropertyChanged
     {
         private bool addOrEdit;
-
+      
         private Client _client;
         public Client Client
         {
@@ -136,6 +136,9 @@ namespace GymAdministration
                 //если был нажат Add
 
                 addOrEdit = true;
+                Client.BirthDate = new DateTime(2000, 1, 1);
+                Client.DateOfValidityFinish = new DateTime(2000, 1, 1);
+                Client.DateOfValidityStart = new DateTime(2000, 1, 1);               
                 LoadData();
             }
         }
@@ -152,9 +155,7 @@ namespace GymAdministration
 
             IsEnabled2 = false;
             IsEnabled1 = true;
-            Client.BirthDate= new DateTime(2000, 1, 1);
-            Client.DateOfValidityFinish = new DateTime(2000, 1, 1);
-            Client.DateOfValidityStart = new DateTime(2000, 1, 1);
+            
 
 
         }
@@ -184,7 +185,16 @@ namespace GymAdministration
                 repo.EditClient(_client);
             }
 
+            IsEnabled1 = false;
+            IsEnabled2 = true;
+
             // Нужна проверка, что заполнены все обязательные поля
+        }
+
+        public void Visit()
+        {
+            string s = string.Format("{0}", _client.IsHere);
+            MessageBox.Show(s);
         }
 
     }
