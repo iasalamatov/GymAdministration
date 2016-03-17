@@ -35,7 +35,7 @@ namespace GymAdministration
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.Save();
         }
     }
 }

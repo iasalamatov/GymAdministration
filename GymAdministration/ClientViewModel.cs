@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GymAdministration.DataBase;
 using System.ComponentModel;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -122,7 +123,7 @@ namespace GymAdministration
 
         public ClientViewModel(Client client)
         {
-
+            _client = new Client();
             if (client != null)
             {
                 Client = client;
@@ -142,16 +143,18 @@ namespace GymAdministration
 
         private void LoadData()
         {
-            var repo = new Repository();
-            var manadersData = repo.AllManagers();
-            Managers = new ObservableCollection<Manager>(manadersData);
+            //var repo = new Repository();
+            //var managersData = repo.AllManagers();
+            //Managers = new ObservableCollection<Manager>(managersData);
 
-            var coachesData = repo.AllCoaches();
-            Coaches = new ObservableCollection<Coach>(coachesData);
+            //var coachesData = repo.AllCoaches();
+            //Coaches = new ObservableCollection<Coach>(coachesData);
 
             IsEnabled2 = false;
             IsEnabled1 = true;
-
+            Client.BirthDate= new DateTime(2000, 1, 1);
+            Client.DateOfValidityFinish = new DateTime(2000, 1, 1);
+            Client.DateOfValidityStart = new DateTime(2000, 1, 1);
 
 
         }
@@ -167,14 +170,18 @@ namespace GymAdministration
 
         public void Save()
         {
+            
             var repo = new Repository();
+           
             if (addOrEdit)
             {
-                //repo.SaveClient(_client);
+                repo.AddNewClient(_client);
+
+               
             }
             else
             {
-                // repo.EditClient(_client);
+                 repo.EditClient(_client);
             }
 
             // Нужна проверка, что заполнены все обязательные поля

@@ -36,12 +36,12 @@
 
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Client.PhoneNumber}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
         <Expander Grid.Row="6" Grid.Column="1" Margin="5" Header="{Binding Client.Manager}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
-            <ListBox  Name="listBoxAddresses"  MaxHeight="400" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox  Name="listBoxManagers"  MaxHeight="400" ItemsSource="{Binding Managers}" ScrollViewer.VerticalScrollBarVisibility="Visible">
             </ListBox>
         </Expander>
 
         <Expander Grid.Row="7" Grid.Column="1" Margin="5" Header="{Binding Client.Coach}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
-            <ListBox  Name="listBoxCouches"  MaxHeight="400" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox  Name="listBoxCouches"  MaxHeight="400" ItemsSource="{Binding Coaches}" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
             </ListBox>
         </Expander>
