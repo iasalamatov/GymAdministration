@@ -193,8 +193,12 @@ namespace GymAdministration
 
         public void Visit()
         {
+            var repo = new Repository();
             string s = string.Format("{0}", _client.IsHere);
             MessageBox.Show(s);
+
+            if (_client.IsHere) repo.FinishVisitTime(_client);
+            else repo.NewVisitTime(_client);
         }
 
     }
