@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
+using System.IO;
 
 namespace GymAdministration
 {
@@ -23,7 +24,7 @@ namespace GymAdministration
         {
             using (var c = new Context())
             {
-                c.Clients.AddOrUpdate(cl => cl.LastName,
+                c.Clients.AddOrUpdate(cl => cl.id,
                     client);
                     
                 c.SaveChanges();
@@ -77,16 +78,11 @@ namespace GymAdministration
         }
      
         // внести изменения в клиента
-        public void EditClient(Client client, string firstName, string lastName, DateTime birthDate, DateTime dateOfValidityStart, DateTime dateOfValidityFinish, string phoneNumber)
+        public void EditClient(Client client)
         {
             using (var c = new Context())
             {
-                client.FirstName = firstName;
-                client.LastName = lastName;
-                client.BirthDate = birthDate;
-                client.DateOfValidityStart = dateOfValidityStart;
-                client.DateOfValidityFinish = dateOfValidityFinish;
-                client.PhoneNumber = phoneNumber;
+               
                 c.Clients.AddOrUpdate(p => p.id,
                     client);
                 c.SaveChanges();
@@ -116,6 +112,15 @@ namespace GymAdministration
 
                 lastVisit.FinishTime = DateTime.Now;
                 c.SaveChanges();
+            }
+        }
+
+        public void SaveStatisticsToTxt()
+        {
+            using(var c = new Context())
+            {
+                FileStream fs = File.Create(@"//..//..");
+                
             }
         }
     }
