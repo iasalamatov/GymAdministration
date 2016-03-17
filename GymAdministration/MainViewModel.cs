@@ -46,10 +46,12 @@ namespace GymAdministration
                 {
                     var window = new ClientWindow(_client);
                     window.ShowDialog();
+                    MessageBox.Show(ID);
                 }
                 else
                 {
                     MessageBox.Show("Not found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
 
 

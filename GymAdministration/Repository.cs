@@ -19,12 +19,13 @@ namespace GymAdministration
             }
         }
         
-        public void AddNewClient(string firstName, string lastName, DateTime birthDate, DateTime dateOfValidityStart, DateTime dateOfValidityFinish)
+        public void AddNewClient(Client client)
         {
             using (var c = new Context())
             {
                 c.Clients.AddOrUpdate(cl => cl.LastName,
-                    new Client { FirstName = firstName, LastName = lastName, BirthDate = birthDate, DateOfValidityStart = dateOfValidityStart, DateOfValidityFinish = dateOfValidityFinish });
+                    client);
+                    
                 c.SaveChanges();
             }
         }
@@ -88,6 +89,32 @@ namespace GymAdministration
                 client.PhoneNumber = phoneNumber;
                 c.Clients.AddOrUpdate(p => p.id,
                     client);
+                c.SaveChanges();
+            }
+        }
+
+        public void NewVisitTime(Client client)
+        {
+            using (var c = new Context())
+            {
+                var visit = new Visit();
+                visit.StartTime = DateTime.Now;
+                client.Visits.Add(visit);
+                c.SaveChanges();
+            }
+        }
+
+        public void FinishVisitTime(Client client)
+        {
+            using (var c = new Context())
+            {
+             //   var lastVisit = from item in client.Visits
+             //                   where (item.id == client.Visits.Count - 1)
+             //                   select item;
+
+                var lastVisit = client.Visits.LastOrDefault();
+
+                lastVisit.FinishTime = DateTime.Now;
                 c.SaveChanges();
             }
         }

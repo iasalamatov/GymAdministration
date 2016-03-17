@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GymAdministration.DataBase;
 using System.ComponentModel;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -123,6 +124,7 @@ namespace GymAdministration
         public ClientViewModel(Client client)
         {
 
+            _client = new Client();
             if (client != null)
             {
                 Client = client;
@@ -170,11 +172,13 @@ namespace GymAdministration
             var repo = new Repository();
             if (addOrEdit)
             {
-                //repo.SaveClient(_client);
+                repo.AddNewClient(_client);
+                MessageBox.Show("vfddfvv");
             }
             else
             {
                 // repo.EditClient(_client);
+                MessageBox.Show("baad");
             }
 
             // Нужна проверка, что заполнены все обязательные поля
