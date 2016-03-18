@@ -197,7 +197,7 @@ namespace GymAdministration
             string s = string.Format("{0}", _client.IsHere);
             MessageBox.Show(s);
 
-            if (_client.IsHere) repo.FinishVisitTime(_client);
+            if (_client.IsHere) repo.NewVisitTime(_client);
             else repo.NewVisitTime(_client);
         }
 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
 using System.IO;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -95,7 +96,11 @@ namespace GymAdministration
             {
                 var visit = new Visit();
                 visit.StartTime = DateTime.Now;
-                client.Visits.Add(visit);
+                visit.FinishTime = new DateTime(2000, 04, 04);
+                visit.Client = c.Clients.FirstOrDefault(p => p.id == client.id);
+                c.Visits.AddOrUpdate(p => p.id,
+                    visit);
+                c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = true;
                 c.SaveChanges();
             }
         }
@@ -119,8 +124,22 @@ namespace GymAdministration
         {
             using(var c = new Context())
             {
-                FileStream fs = File.Create(@"//..//..");
-                
+                string filename = "stat_" + DateTime.Now.ToString();
+
+                string path = @"..//..//" + filename + ".txt";
+
+                // This text is added only once to the file.
+                if (!File.Exists(path))
+                {
+                    // Create a file to write to.
+                    string createText = "Hello and Welcome" + Environment.NewLine;
+                    File.WriteAllText(path, createText, Encoding.UTF8);
+                }
+
+                // This text is always added, making the file longer over time
+                // if it is not deleted.
+                string appendText = "This is extra text" + Environment.NewLine;
+                File.AppendAllText(path, appendText, Encoding.UTF8);
             }
         }
     }
