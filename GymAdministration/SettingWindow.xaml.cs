@@ -35,6 +35,31 @@ namespace GymAdministration
 
         private void ButtonEditClient_Click(object sender, RoutedEventArgs e)
         {
+            _viewModel.EditManager();
+        }
+
+        private void ButtonRemoveManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEditManager_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.AddManager();
+        }
+
+        private void ButtonAddManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSaveManager_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SaveManager();
+        }
+
+        private void ButtonRemoveVisit_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

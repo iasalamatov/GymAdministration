@@ -143,14 +143,14 @@ namespace GymAdministration
         }
 
 
-        private void LoadData()
+        private async void LoadData()
         {
-            //var repo = new Repository();
-            //var managersData = repo.AllManagers();
-            //Managers = new ObservableCollection<Manager>(managersData);
+            var rep = new Repository();
+            var dataManagers = await rep.AllManagers();
+            Managers = new ObservableCollection<Manager>(dataManagers);
 
-            //var coachesData = repo.AllCoaches();
-            //Coaches = new ObservableCollection<Coach>(coachesData);
+            var dataCoaches = await rep.AllCoaches();
+            Coaches = new ObservableCollection<Coach>(dataCoaches);
 
             IsEnabled2 = false;
             IsEnabled1 = true;
@@ -172,7 +172,7 @@ namespace GymAdministration
             var repo = new Repository();
            
            
-                repo.EditClient(_client);
+                repo.SaveClient(_client);
             
 
             IsEnabled1 = false;

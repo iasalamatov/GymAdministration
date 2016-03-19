@@ -104,7 +104,15 @@ namespace GymAdministration
         
         private async void LoadData()
         {
-           
+            var rep = new Repository();
+            var dataClient = await rep.AllClients();
+            Clients = new ObservableCollection<Client>(dataClient);
+
+            var dataManagers = await rep.AllManagers();
+            Managers = new ObservableCollection<Manager>(dataManagers);
+
+            var dataCoaches = await rep.AllCoaches();
+            Coaches = new ObservableCollection<Coach>(dataCoaches);
         }
 
 
@@ -117,6 +125,39 @@ namespace GymAdministration
             }
         }
 
+        public void SaveManager()
+        {
+            var rep = new Repository();
+            var manager = new Manager();
+            if (_addOrEdit)
+            {
+                
+                
+                    manager.FirstName = ManagerFirstName;
+                    manager.LastName = ManagerLastName;
+                
+                
+            }
+            else
+            {
+                SelectedManager.FirstName = ManagerFirstName;
+                SelectedManager.LastName = ManagerLastName;
+                manager=_selectedManager;
+            }
+            rep.SaveManager(manager);
+        }
+
+        private bool _addOrEdit;
+
+        public void EditManager()
+        {
+            _addOrEdit = false;
+        }
+
+        public void AddManager()
+        {
+            _addOrEdit = true;
+        }
 
         
     }
