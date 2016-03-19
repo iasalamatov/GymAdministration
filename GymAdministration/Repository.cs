@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace GymAdministration
 {
-    class Repository
+   public class Repository
     {
         public Client FindClient(int id)
         {
