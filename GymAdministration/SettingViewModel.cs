@@ -141,6 +141,8 @@ namespace GymAdministration
             var dataCoaches = await rep.AllCoaches();
             Coaches = new ObservableCollection<Coach>(dataCoaches);
 
+            
+
             rep.ClientAdded += cl => Clients.Add(cl);
         }
 
