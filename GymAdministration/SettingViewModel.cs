@@ -125,6 +125,39 @@ namespace GymAdministration
             }
         }
 
+        public void SaveManager()
+        {
+            var rep = new Repository();
+            var manager = new Manager();
+            if (_addOrEdit)
+            {
+                
+                
+                    manager.FirstName = ManagerFirstName;
+                    manager.LastName = ManagerLastName;
+                
+                
+            }
+            else
+            {
+                SelectedManager.FirstName = ManagerFirstName;
+                SelectedManager.LastName = ManagerLastName;
+                manager=_selectedManager;
+            }
+            rep.SaveManager(manager);
+        }
+
+        private bool _addOrEdit;
+
+        public void EditManager()
+        {
+            _addOrEdit = false;
+        }
+
+        public void AddManager()
+        {
+            _addOrEdit = true;
+        }
 
         
     }
