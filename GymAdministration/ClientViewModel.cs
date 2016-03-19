@@ -182,7 +182,7 @@ namespace GymAdministration
             MessageBox.Show(s);
 
             if (_client.IsHere) repo.NewVisitTime(_client);
-            else repo.NewVisitTime(_client);
+            else repo.FinishVisitTime(_client);
         }
 
     }
