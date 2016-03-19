@@ -104,7 +104,7 @@ namespace GymAdministration
         
         private async void LoadData()
         {
-            var rep = new Repository();
+            var rep = Factory.GetRepository();
 
             {
                 var dataClient = await rep.AllClients();
@@ -131,7 +131,7 @@ namespace GymAdministration
 
         public void SaveManager()
         {
-            var rep = new Repository();
+            var rep = Factory.GetRepository();
             var manager = new Manager();
             if (_addOrEdit)
             {                                

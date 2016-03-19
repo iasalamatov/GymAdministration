@@ -166,8 +166,8 @@ namespace GymAdministration
         }
 
         public void Save()
-        {            
-            var repo = new Repository();                      
+        {
+            var repo = Factory.GetRepository();                     
                 repo.SaveClient(_client);            
             IsEnabled1 = false;
             IsEnabled2 = true;
@@ -177,7 +177,7 @@ namespace GymAdministration
 
         public void Visit()
         {
-            var repo = new Repository();
+            var repo = Factory.GetRepository();
             string s = string.Format("{0}", _client.IsHere);
             MessageBox.Show(s);
 

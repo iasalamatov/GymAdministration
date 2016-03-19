@@ -39,7 +39,7 @@ namespace GymAdministration
 
             try
             {
-                var repo = new Repository();
+                var repo = Factory.GetRepository();
 
                 _client = repo.FindClient(Int32.Parse(ID));
                 if (_client != null)
