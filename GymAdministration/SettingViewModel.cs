@@ -180,6 +180,26 @@ namespace GymAdministration
             _addOrEdit = true;
         }
 
+        public void RemoveManager()
+        {
+            if (SelectedManager != null)
+            {
+                var repo = Factory.GetRepository();
+                repo.RemoveManager(SelectedManager);
+            }
+
+        }
+
+        public void RemoveCoach()
+        {
+            if (SelectedCoach != null)
+            {
+                var repo = Factory.GetRepository();
+                repo.RemoveCoach(SelectedCoach);
+            }
+
+        }
+
         
     }
 }

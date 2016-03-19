@@ -40,7 +40,7 @@ namespace GymAdministration
 
         private void ButtonRemoveManager_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.RemoveManager();
         }
 
        
@@ -63,7 +63,7 @@ namespace GymAdministration
 
         private void ButtonRemoveCoach_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.RemoveCoach();
         }
 
         private void ButtonEditCoach_Click(object sender, RoutedEventArgs e)
