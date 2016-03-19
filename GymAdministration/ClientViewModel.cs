@@ -23,7 +23,6 @@ namespace GymAdministration
                 _client = value;
                 OnPropertyChanged("Client");
             }
-
         }
 
 
@@ -166,24 +165,15 @@ namespace GymAdministration
             //З
             LoadData();
 
-
         }
 
         public void Save()
-        {
-            
+        {            
             var repo = new Repository();
            
-            if (addOrEdit)
-            {
-                repo.AddNewClient(_client);
-
-               
-            }
-            else
-            {
+           
                 repo.EditClient(_client);
-            }
+            
 
             IsEnabled1 = false;
             IsEnabled2 = true;

@@ -39,7 +39,7 @@
 
         </StackPanel>
 
-        <Button  Margin="10 10" Grid.Row="3" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonAdd_Click">Add new client</Button>
+        <Button  Margin="10 10" Grid.Row="3" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonSetting_Click">Setting</Button>
 
         <Expander Grid.Row="2" Grid.Column="1" Margin="5" Header="{Binding Client}" Padding="5" BorderBrush="LightBlue" BorderThickness="2">
             <ListBox  Name="listBoxAddresses"  MaxHeight="400" ScrollViewer.VerticalScrollBarVisibility="Visible">

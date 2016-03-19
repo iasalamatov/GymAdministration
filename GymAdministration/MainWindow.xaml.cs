@@ -36,9 +36,9 @@ namespace GymAdministration
 
         
 
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        private void buttonSetting_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.AddNew();
+            _viewModel.Setting();
         }
 
         private void buttonNameFind_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using GymAdministration.DataBase;
+using System.Collections.ObjectModel;
+
+namespace GymAdministration
+{
+    class SettingViewModel : INotifyPropertyChanged
+    {
+        public string ManagerFirstName { get; set; }
+        public string ManagerLastName { get; set; }
+
+        public string CoachFirstName { get; set; }
+        public string CoachLastName { get; set; }
+
+        private Client _selectesclient;
+        public Client SelectedClient
+        {
+            get { return _selectesclient; }
+            set
+            {
+                _selectesclient = value;
+                OnPropertyChanged("SelectedClient");
+            }
+        }
+
+        private ObservableCollection<Client> _clients;
+        public ObservableCollection<Client> Clients
+        {
+            get { return _clients; }
+            set
+            {
+                _clients = value;
+                OnPropertyChanged("Clients");
+            }
+        }
+
+        private ObservableCollection<Coach> _coaches;
+        private Manager _selectedCoach;
+
+        public ObservableCollection<Coach> Coaches
+        {
+            get { return _coaches; }
+            set
+            {
+                _coaches = value;
+                OnPropertyChanged("Coaches");
+            }
+        }
+        public Manager SelectedCoach
+        {
+            get
+            {
+                return _selectedCoach;
+            }
+            set
+            {
+                _selectedCoach = value;
+                OnPropertyChanged("SelectedCoach");
+            }
+        }
+
+
+        private ObservableCollection<Manager> _managers;
+        private Manager _selectedManager;
+
+        public ObservableCollection<Manager> Managers
+        {
+            get { return _managers; }
+            set
+            {
+                _managers = value;
+                OnPropertyChanged("Managers");
+            }
+        }
+        public Manager SelectedManager
+        {
+            get
+            {
+                return _selectedManager;
+            }
+            set
+            {
+                _selectedManager = value;
+                OnPropertyChanged("SelectedManager");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        public SettingViewModel()
+        {
+            LoadData();
+        }
+        
+        private async void LoadData()
+        {
+           
+        }
+
+
+        public void EditActiveClient()
+        {
+            if (SelectedClient != null)
+            {
+                var window = new ClientWindow(SelectedClient);
+                window.ShowDialog();
+            }
+        }
+
+
+        
+    }
+}

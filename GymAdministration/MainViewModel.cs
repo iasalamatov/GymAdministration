@@ -64,10 +64,9 @@ namespace GymAdministration
 
 
 
-        public void AddNew()
+        public void Setting()
         {
-            _client = null;
-            var window = new ClientWindow(_client);
+            var window = new SettingWindow();
             window.ShowDialog();
         }
     }
