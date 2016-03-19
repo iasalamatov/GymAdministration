@@ -58,6 +58,31 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Coaches">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label >All coaches</Label>
+                    <ListBox Grid.Row="1" Margin="5" Name="listBoxCouches" ItemsSource="{Binding Coaches}" DisplayMemberPath="LastName"
+                 SelectedItem="{Binding SelectedCoach}" ></ListBox>
+
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <Button Height="20" Margin="0 3" Click="ButtonRemoveCoach_Click" >Remove</Button>
+                        <Button  Height="20" Margin="0 3" Click="ButtonEditCoach_Click" >Edit</Button>
+                        <Button  Height="20" Margin="0 3" Click="ButtonAddCoach_Click">Add</Button>
+                        <TextBlock  >First name</TextBlock>
+                        <TextBox  Text="{Binding CoachFirstName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
+                        <TextBlock >Last name</TextBlock>
+                        <TextBox  Text="{Binding CoachLastName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
+                        <Button  Height="20" Margin="0 3" Click="ButtonSaveCoach_Click" >Save</Button>
+                    </StackPanel>
+
+                </Grid>
 
             </TabItem>
             <TabItem Header="Clients">
@@ -65,25 +90,22 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label >All clients</Label>
-                    <Label Grid.Column="2">Visits</Label>
+                    <Label >All clients</Label>                   
                     <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedClient}" ></ListBox>
 
-                    <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Name="listBoxVisits" ItemsSource="{Binding SelectedClient.Visits}" DisplayMemberPath="StartTime"
-                 SelectedItem="{Binding SelectedVisit}" ></ListBox>
+                  
 
                     <Button Grid.Row="2" Height="25" Margin="0 3" Click="ButtonAddClient_Click" >Add</Button>
                     <Button Grid.Row="2" Grid.Column="1" Margin="0,3" Click="ButtonEditClient_Click">Edit</Button>
-                    <Button Grid.Row="2" Grid.Column="3" Height="25" Margin="0 3" Click="ButtonRemoveVisit_Click">Remove</Button>
+                    
                 </Grid>
 
             </TabItem>

@@ -40,7 +40,7 @@ namespace GymAdministration
         }
 
         private ObservableCollection<Coach> _coaches;
-        private Manager _selectedCoach;
+        private Coach _selectedCoach;
 
         public ObservableCollection<Coach> Coaches
         {
@@ -51,7 +51,7 @@ namespace GymAdministration
                 OnPropertyChanged("Coaches");
             }
         }
-        public Manager SelectedCoach
+        public Coach SelectedCoach
         {
             get
             {
@@ -91,10 +91,6 @@ namespace GymAdministration
         }
 
        
-        private Visit _selectedVisit;
-
-       
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {
@@ -152,22 +148,34 @@ namespace GymAdministration
                 manager=_selectedManager;
             }
             rep.SaveManager(manager);
+        }
 
+        public void SaveCoach()
+        {
+            var rep = Factory.GetRepository();
+            var coach = new Coach();
+            if (_addOrEdit)
+            {
+                coach.FirstName = CoachFirstName;
+                coach.LastName = CoachLastName;
+            }
+            else
+            {
+                SelectedCoach.FirstName = CoachFirstName;
+                SelectedCoach.LastName = CoachLastName;
+                coach = _selectedCoach;
+            }
+            rep.SaveCoach(coach);
         }
 
         private bool _addOrEdit;
 
-        public void EditManager()
+        public void Edit()
         {
-            _addOrEdit = false;
-            if (SelectedManager != null)
-            {
-                ManagerFirstName = SelectedManager.FirstName;
-                ManagerLastName = SelectedManager.LastName;
-            }
+            _addOrEdit = false;           
         }
 
-        public void AddManager()
+        public void Add()
         {
             _addOrEdit = true;
         }

@@ -91,6 +91,17 @@ namespace GymAdministration
                 c.SaveChanges();
             }
         }
+        public void SaveCoach(Coach coach)
+        {
+            using (var c = new Context())
+            {
+                c.Coaches.AddOrUpdate(cl => cl.id,
+                    coach);
+
+                c.SaveChanges();
+            }
+        }
+
         // Все тренеры
         public List<Coach> Coaches()
         {
