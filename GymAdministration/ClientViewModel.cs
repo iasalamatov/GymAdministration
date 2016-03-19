@@ -161,20 +161,14 @@ namespace GymAdministration
 
 
         public void Edit()
-        {
-            //З
+        {            
             LoadData();
-
         }
 
         public void Save()
-        {            
-            var repo = new Repository();
-           
-           
-                repo.SaveClient(_client);
-            
-
+        {
+            var repo = Factory.GetRepository();                     
+                repo.SaveClient(_client);            
             IsEnabled1 = false;
             IsEnabled2 = true;
 
@@ -183,7 +177,7 @@ namespace GymAdministration
 
         public void Visit()
         {
-            var repo = new Repository();
+            var repo = Factory.GetRepository();
             string s = string.Format("{0}", _client.IsHere);
             MessageBox.Show(s);
 
