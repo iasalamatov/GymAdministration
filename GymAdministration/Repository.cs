@@ -203,13 +203,14 @@ namespace GymAdministration
 
             using (var c = new Context())
             {
-                c.Managers.Remove(manager);
+                var man = c.Managers.FirstOrDefault(m => m.id == manager.id);
+                c.Managers.Remove(man);
                 c.SaveChanges();
             }
         }
 
         public void RemoveCoach(Coach coach)
-        {
+        { 
 
             using (var c = new Context())
             {

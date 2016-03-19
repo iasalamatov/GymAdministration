@@ -43,12 +43,12 @@
                     <Label >All managers</Label>
                     <ListBox Grid.Row="1" Margin="5" Name="listBoxManagers" ItemsSource="{Binding Managers}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedManager}" >
-                        <ListBoxItem Name="listBoxManagersItem"></ListBoxItem>
+                        
                     </ListBox>
 
                     <StackPanel Grid.Column="1" Grid.Row="1">
-                        <Button Height="20" Margin="0 3" Click="ButtonRemoveManager_Click"  IsEnabled="{Binding ElementName=listBoxManagersItem, Path=IsSelected}">Remove</Button>
-                        <Button  Height="20" Margin="0 3" Click="ButtonEditManager_Click" IsEnabled="{Binding ElementName=listBoxManagersItem, Path=IsSelected}">Edit</Button>
+                        <Button Height="20" Margin="0 3" Click="ButtonRemoveManager_Click"  >Remove</Button>
+                        <Button  Height="20" Margin="0 3" Click="ButtonEditManager_Click" >Edit</Button>
                         <Button  Height="20" Margin="0 3" Click="ButtonAddManager_Click">Add</Button>
                         <TextBlock  >First name</TextBlock>
                         <TextBox  Text="{Binding ManagerFirstName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
@@ -72,12 +72,12 @@
                     <Label >All coaches</Label>
                     <ListBox Grid.Row="1" Margin="5" Name="listBoxCoaches" ItemsSource="{Binding Coaches}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedCoach}" >
-                        <ListBoxItem Name="listBoxCoachesItem"></ListBoxItem>
+                        
                     </ListBox>
 
                     <StackPanel Grid.Column="1" Grid.Row="1">
-                        <Button Height="20" Margin="0 3" Click="ButtonRemoveCoach_Click" IsEnabled="{Binding ElementName=listBoxCoachesItem, Path=IsSelected}">Remove</Button>
-                        <Button  Height="20" Margin="0 3" Click="ButtonEditCoach_Click" IsEnabled="{Binding ElementName=listBoxCoachesItem, Path=IsSelected}">Edit</Button>
+                        <Button Height="20" Margin="0 3" Click="ButtonRemoveCoach_Click" >Remove</Button>
+                        <Button  Height="20" Margin="0 3" Click="ButtonEditCoach_Click" >Edit</Button>
                         <Button  Height="20" Margin="0 3" Click="ButtonAddCoach_Click">Add</Button>
                         <TextBlock  >First name</TextBlock>
                         <TextBox  Text="{Binding CoachFirstName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
@@ -104,10 +104,10 @@
                     <Label >All clients</Label>                   
                     <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}"   DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedClient}" >
-                        <ListBoxItem Name="listBoxClientsItem"></ListBoxItem>
+                        
                     </ListBox>                  
                     <Button Grid.Row="2" Height="25" Margin="0 3" Click="ButtonAddClient_Click" >Add</Button>
-                    <Button Grid.Row="2" Grid.Column="1" Margin="0,3" IsEnabled="{Binding ElementName=listBoxClientsItem, Path=IsSelected}" Click="ButtonShowClient_Click">Show</Button>
+                    <Button Grid.Row="2" Grid.Column="1" Margin="0,3"  Click="ButtonShowClient_Click">Show</Button>
                     
                 </Grid>
 

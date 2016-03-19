@@ -163,7 +163,7 @@ namespace GymAdministration
                 SelectedManager.LastName = ManagerLastName;
                 manager=_selectedManager;
             }
-            _isEnabled1 = false;
+            IsEnabled1 = false;
             rep.SaveManager(manager);
         }
 
@@ -182,7 +182,7 @@ namespace GymAdministration
                 SelectedCoach.LastName = CoachLastName;
                 coach = _selectedCoach;
             }
-            _isEnabled1 = false;
+            IsEnabled1 = false;
             rep.SaveCoach(coach);
         }
 
@@ -191,13 +191,13 @@ namespace GymAdministration
         public void Edit()
         {
             _addOrEdit = false;
-            _isEnabled1 = true;
+            IsEnabled1 = true;
         }
 
         public void Add()
         {
             _addOrEdit = true;
-            _isEnabled1 = true;
+            IsEnabled1 = true;
         }
 
         public void RemoveManager()
