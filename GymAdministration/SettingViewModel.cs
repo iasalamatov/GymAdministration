@@ -130,13 +130,9 @@ namespace GymAdministration
             var rep = new Repository();
             var manager = new Manager();
             if (_addOrEdit)
-            {
-                
-                
+            {                                
                     manager.FirstName = ManagerFirstName;
-                    manager.LastName = ManagerLastName;
-                
-                
+                    manager.LastName = ManagerLastName;                               
             }
             else
             {
@@ -145,6 +141,7 @@ namespace GymAdministration
                 manager=_selectedManager;
             }
             rep.SaveManager(manager);
+
         }
 
         private bool _addOrEdit;
@@ -152,6 +149,11 @@ namespace GymAdministration
         public void EditManager()
         {
             _addOrEdit = false;
+            if (SelectedManager != null)
+            {
+                ManagerFirstName = SelectedManager.FirstName;
+                ManagerLastName = SelectedManager.LastName;
+            }
         }
 
         public void AddManager()
