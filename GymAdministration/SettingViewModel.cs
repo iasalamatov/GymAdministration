@@ -105,14 +105,18 @@ namespace GymAdministration
         private async void LoadData()
         {
             var rep = new Repository();
-            var dataClient = await rep.AllClients();
-            Clients = new ObservableCollection<Client>(dataClient);
 
+            {
+                var dataClient = await rep.AllClients();
+                Clients = new ObservableCollection<Client>(dataClient);
+            }
             var dataManagers = await rep.AllManagers();
             Managers = new ObservableCollection<Manager>(dataManagers);
 
             var dataCoaches = await rep.AllCoaches();
             Coaches = new ObservableCollection<Coach>(dataCoaches);
+
+            rep.ClientAdded += cl => Clients.Add(cl);
         }
 
 
