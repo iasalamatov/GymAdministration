@@ -25,12 +25,15 @@ namespace GymAdministration
         public DateTime DateOfValidityStart { get; set; }
         [Required]
         public DateTime DateOfValidityFinish { get; set; }
+
         public bool IsHere { get; set; }
 
         public List<Visit> Visits { get; set; }
      //   [Required]
      //   public Image Photo { get; set; }
+
         public Manager Manager { get; set; }
+
         public Coach Coach { get; set; }
     }
 }

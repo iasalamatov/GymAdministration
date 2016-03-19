@@ -20,14 +20,14 @@ namespace GymAdministration
                 return clnt;
             }
         }
-        
+
         public void AddNewClient(Client client)
         {
             using (var c = new Context())
             {
                 c.Clients.AddOrUpdate(cl => cl.id,
                     client);
-                    
+
                 c.SaveChanges();
             }
         }
@@ -43,30 +43,30 @@ namespace GymAdministration
 
         }
 
-       public List<Client> FindAllClientsByLastName(string lastName)
-       {
-           using (var c = new Context())
-           {
-               List<Client> OurClients = new List<Client>();
-               foreach (var item in c.Clients)
-               {
-                   if (item.LastName == lastName)
-                       OurClients.Add(item);
-               }
+        public List<Client> FindAllClientsByLastName(string lastName)
+        {
+            using (var c = new Context())
+            {
+                List<Client> OurClients = new List<Client>();
+                foreach (var item in c.Clients)
+                {
+                    if (item.LastName == lastName)
+                        OurClients.Add(item);
+                }
 
-               return OurClients;
-           }
-       }
+                return OurClients;
+            }
+        }
 
         // Все манагеры
         public List<Manager> AllManagers()
-       {
+        {
             using (var c = new Context())
             {
                 var managers = c.Managers.ToList();
                 return managers;
             }
-       }
+        }
 
         // Все тренеры
         public List<Coach> AllCoaches()
@@ -77,13 +77,13 @@ namespace GymAdministration
                 return coaches;
             }
         }
-     
+
         // внести изменения в клиента
         public void EditClient(Client client)
         {
             using (var c = new Context())
             {
-               
+
                 c.Clients.AddOrUpdate(p => p.id,
                     client);
                 c.SaveChanges();
@@ -109,9 +109,9 @@ namespace GymAdministration
         {
             using (var c = new Context())
             {
-             //   var lastVisit = from item in client.Visits
-             //                   where (item.id == client.Visits.Count - 1)
-             //                   select item;
+                //   var lastVisit = from item in client.Visits
+                //                   where (item.id == client.Visits.Count - 1)
+                //                   select item;
 
                 var lastVisit = client.Visits.LastOrDefault();
 
@@ -122,25 +122,30 @@ namespace GymAdministration
 
         public void SaveStatisticsToTxt()
         {
-            using(var c = new Context())
+            using (var c = new Context())
             {
-                string filename = "stat_" + DateTime.Now.ToString();
+                string filename = "stat_" + DateTime.Now.ToLongDateString();
+                string str = "..//..//" + filename + ".txt";
+                string path = @str;
 
-                string path = @"..//..//" + filename + ".txt";
-
-                // This text is added only once to the file.
                 if (!File.Exists(path))
                 {
-                    // Create a file to write to.
-                    string createText = "Hello and Welcome" + Environment.NewLine;
+                    string createText = "Statistics for:" + DateTime.Now.ToLongDateString() + Environment.NewLine;
                     File.WriteAllText(path, createText, Encoding.UTF8);
                 }
 
-                // This text is always added, making the file longer over time
-                // if it is not deleted.
-                string appendText = "This is extra text" + Environment.NewLine;
-                File.AppendAllText(path, appendText, Encoding.UTF8);
+                string info;
+                foreach (var item in c.Visits)
+                {
+                    if (item.StartTime >= DateTime.Today)
+                    {
+                        info = item.Client.LastName + " " + item.Client.FirstName + ": " + item.StartTime.ToString() + " " + item.FinishTime.ToString();
+                        File.AppendAllText(path, info, Encoding.UTF8);
+                    }
+                }
             }
         }
     }
 }
+
+
