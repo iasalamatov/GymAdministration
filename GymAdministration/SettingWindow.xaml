@@ -41,7 +41,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label >All managers</Label>
-                    <ListBox Grid.Row="1" Margin="5" Name="listBoxManagers" ItemsSource="{Binding Managers}" DisplayMemberPath="Name"
+                    <ListBox Grid.Row="1" Margin="5" Name="listBoxManagers" ItemsSource="{Binding Managers}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedManager}" ></ListBox>
 
                     <StackPanel Grid.Column="1" Grid.Row="1">
@@ -75,7 +75,7 @@
                     </Grid.RowDefinitions>
                     <Label >All clients</Label>
                     <Label Grid.Column="2">Visits</Label>
-                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}" DisplayMemberPath="Name"
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedClient}" ></ListBox>
 
                     <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Name="listBoxVisits" ItemsSource="{Binding Visits}" DisplayMemberPath="Name"

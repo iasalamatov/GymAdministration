@@ -37,5 +37,30 @@ namespace GymAdministration
         {
 
         }
+
+        private void ButtonRemoveManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEditManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAddManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSaveManager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonRemoveVisit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

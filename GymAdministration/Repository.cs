@@ -22,7 +22,7 @@ namespace GymAdministration
             }
         }
 
-        public void AddNewClient(Client client)
+        public void SaveClient(Client client)
         {
             using (var c = new Context())
             {
@@ -60,7 +60,7 @@ namespace GymAdministration
         }
 
         // Все манагеры
-        public List<Manager> AllManagers()
+        public List<Manager> Managers()
         {
             using (var c = new Context())
             {
@@ -68,7 +68,7 @@ namespace GymAdministration
                 return managers;
             }
         }
-        public async Task<IEnumerable<Manager>> Managers()
+        public async Task<IEnumerable<Manager>> AllManagers()
         {
             using (var c = new Context())
             {
@@ -76,8 +76,18 @@ namespace GymAdministration
             }
         }
 
+        public void SaveManager(Manager manager)
+        {
+            using(var c = new Context())
+            {
+                c.Managers.AddOrUpdate(cl => cl.id,
+                    manager);
+
+                c.SaveChanges();
+            }
+        }
         // Все тренеры
-        public List<Coach> AllCoaches()
+        public List<Coach> Coaches()
         {
             using (var c = new Context())
             {
@@ -85,24 +95,32 @@ namespace GymAdministration
                 return coaches;
             }
         }
-        public async Task<IEnumerable<Coach>> Coaches()
+        public async Task<IEnumerable<Coach>> AllCoaches()
         {
             using (var c = new Context())
             {
                 return await c.Coaches.ToListAsync();
             }
         }
-        // внести изменения в клиента
-        public void EditClient(Client client)
+
+        public async Task<IEnumerable<Client>> AllClients()
         {
             using (var c = new Context())
             {
-
-                c.Clients.AddOrUpdate(p => p.id,
-                    client);
-                c.SaveChanges();
+                return await c.Clients.ToListAsync();
             }
         }
+        // внести изменения в клиента
+     //   public void SaveClient(Client client)
+     //   {
+     //       using (var c = new Context())
+     //       {
+     //
+     //           c.Clients.AddOrUpdate(p => p.id,
+     //               client);
+     //           c.SaveChanges();
+     //       }
+     //   }
 
         public void NewVisitTime(Client client)
         {
@@ -158,6 +176,7 @@ namespace GymAdministration
                     }
                 }
             }
+
         }
     }
 }

@@ -172,7 +172,7 @@ namespace GymAdministration
             var repo = new Repository();
            
            
-                repo.EditClient(_client);
+                repo.SaveClient(_client);
             
 
             IsEnabled1 = false;
