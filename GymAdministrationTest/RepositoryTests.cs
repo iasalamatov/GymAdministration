@@ -15,11 +15,16 @@ namespace GymAdministrationTest
     public class RepositoryTests
     {
         [TestMethod]
-        public void FindClientByID()
+        public void FindAllClientsByLastNameTest()
         {
-          var clnt = new Client  { FirstName = "Ilya", LastName = "Salamatov", BirthDate = new DateTime(1994, 4, 4), DateOfValidityStart = new DateTime(2016, 03, 09), DateOfValidityFinish = new DateTime(2017, 03, 09) };
-          var repo = new Repository();
-            Assert.AreEqual(clnt, repo.FindClient(1));
+            var repo = new Repository();
+            string _lastName = "Ignash";
+            int count = 0;
+            int expectedCount = 1;
+
+            count = repo.FindAllClientsByLastName(_lastName).Count;
+
+            Assert.AreEqual(expectedCount, count);
         }
     }
 }
