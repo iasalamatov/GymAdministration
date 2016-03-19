@@ -90,30 +90,10 @@ namespace GymAdministration
             }
         }
 
-        private ObservableCollection<Manager> _visits;
-        private Manager _selectedVisit;
+       
+        private Visit _selectedVisit;
 
-        public ObservableCollection<Manager> Visits
-        {
-            get { return _visits; }
-            set
-            {
-                _visits = value;
-                OnPropertyChanged("Visits");
-            }
-        }
-        public Manager SelectedVisit
-        {
-            get
-            {
-                return _selectedVisit;
-            }
-            set
-            {
-                _selectedVisit = value;
-                OnPropertyChanged("SelectedVisit");
-            }
-        }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

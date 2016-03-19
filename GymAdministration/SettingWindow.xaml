@@ -78,7 +78,7 @@
                     <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}" DisplayMemberPath="LastName"
                  SelectedItem="{Binding SelectedClient}" ></ListBox>
 
-                    <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Name="listBoxVisits" ItemsSource="{Binding Visits}" DisplayMemberPath="Name"
+                    <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Name="listBoxVisits" ItemsSource="{Binding SelectedClient.Visits}" DisplayMemberPath="StartTime"
                  SelectedItem="{Binding SelectedVisit}" ></ListBox>
 
                     <Button Grid.Row="2" Height="25" Margin="0 3" Click="ButtonAddClient_Click" >Add</Button>
