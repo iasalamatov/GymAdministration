@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
+using System.Data.Entity;
 using System.IO;
 using System.Windows;
 
@@ -67,6 +68,13 @@ namespace GymAdministration
                 return managers;
             }
         }
+        public async Task<IEnumerable<Manager>> Managers()
+        {
+            using (var c = new Context())
+            {
+                return await c.Managers.ToListAsync();
+            }
+        }
 
         // Все тренеры
         public List<Coach> AllCoaches()
@@ -77,7 +85,13 @@ namespace GymAdministration
                 return coaches;
             }
         }
-
+        public async Task<IEnumerable<Coach>> Coaches()
+        {
+            using (var c = new Context())
+            {
+                return await c.Coaches.ToListAsync();
+            }
+        }
         // внести изменения в клиента
         public void EditClient(Client client)
         {
