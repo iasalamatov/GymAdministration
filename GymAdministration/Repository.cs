@@ -11,8 +11,9 @@ using System.Windows;
 
 namespace GymAdministration
 {
-    class Repository
+   public class Repository
     {
+        public event Action<Client> ClientAdded;
         public Client FindClient(int id)
         {
             using (var c = new Context())
@@ -30,6 +31,8 @@ namespace GymAdministration
                     client);
 
                 c.SaveChanges();
+                if (ClientAdded != null)
+                    ClientAdded(client);
             }
         }
 
@@ -177,6 +180,26 @@ namespace GymAdministration
                 }
             }
 
+        }
+
+        public void RemoveManager(Manager manager)
+        {
+
+            using (var c = new Context())
+            {
+                c.Managers.Remove(manager);
+                c.SaveChanges();
+            }
+        }
+
+        public void RemoveCoach(Coach coach)
+        {
+
+            using (var c = new Context())
+            {
+                c.Coaches.Remove(coach);
+                c.SaveChanges();
+            }
         }
     }
 }
