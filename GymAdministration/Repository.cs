@@ -14,6 +14,7 @@ namespace GymAdministration
    public class Repository
     {
         public event Action<Client> ClientAdded;
+
         public Client FindClient(int id)
         {
             using (var c = new Context())
@@ -31,6 +32,7 @@ namespace GymAdministration
                     client);
 
                 c.SaveChanges();
+
                 if (ClientAdded != null)
                     ClientAdded(client);
             }
@@ -201,6 +203,7 @@ namespace GymAdministration
                 c.SaveChanges();
             }
         }
+
     }
 }
 
