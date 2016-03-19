@@ -117,13 +117,29 @@ namespace GymAdministration
             var dataCoaches = await rep.AllCoaches();
             Coaches = new ObservableCollection<Coach>(dataCoaches);
 
-            
+            _isEnabled1 = false;
 
             rep.ClientAdded += cl => Clients.Add(cl);
         }
 
+        private bool _isEnabled1;
+        public bool IsEnabled1
+        {
+            get { return _isEnabled1; }
 
-        public void EditActiveClient()
+            set
+            {
+                if (_isEnabled1 == value)
+                {
+                    return;
+                }
+                _isEnabled1 = value;
+                OnPropertyChanged("IsEnabled1");
+            }
+        }
+
+
+        public void ShowActiveClient()
         {
             if (SelectedClient != null)
             {
@@ -147,6 +163,7 @@ namespace GymAdministration
                 SelectedManager.LastName = ManagerLastName;
                 manager=_selectedManager;
             }
+            _isEnabled1 = false;
             rep.SaveManager(manager);
         }
 
@@ -165,6 +182,7 @@ namespace GymAdministration
                 SelectedCoach.LastName = CoachLastName;
                 coach = _selectedCoach;
             }
+            _isEnabled1 = false;
             rep.SaveCoach(coach);
         }
 
@@ -172,12 +190,14 @@ namespace GymAdministration
 
         public void Edit()
         {
-            _addOrEdit = false;           
+            _addOrEdit = false;
+            _isEnabled1 = true;
         }
 
         public void Add()
         {
             _addOrEdit = true;
+            _isEnabled1 = true;
         }
 
         public void RemoveManager()

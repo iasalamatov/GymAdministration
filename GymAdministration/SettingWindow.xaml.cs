@@ -33,9 +33,9 @@ namespace GymAdministration
             window.ShowDialog();
         }
 
-        private void ButtonEditClient_Click(object sender, RoutedEventArgs e)
+        private void ButtonShowClient_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.EditActiveClient();
+            _viewModel.ShowActiveClient();
         }
 
         private void ButtonRemoveManager_Click(object sender, RoutedEventArgs e)
