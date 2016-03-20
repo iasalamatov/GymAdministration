@@ -19,13 +19,24 @@ namespace GymAdministrationTest
         {
             var repo = new Repository();
             string _lastName = "Ignash";
-      
             int expectedCount = 1;
 
             var lst = repo.FindAllClientsByLastName(_lastName);
-
             int count = lst.Count();
-           
+
+            Assert.AreEqual(expectedCount, count);
+        }
+
+
+        public void FindAllClientsByLastNameTest2()
+        {
+            var repo = new Repository();
+            string _lastName = "Salamatov";
+            int expectedCount = 4;
+
+            var lst = repo.FindAllClientsByLastName(_lastName);
+            int count = lst.Count();
+
             Assert.AreEqual(expectedCount, count);
         }
     }
