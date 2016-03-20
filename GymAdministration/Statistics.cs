@@ -36,6 +36,11 @@ namespace GymAdministration
 
                 File.AppendAllText(path, PeopleInTheGym, Encoding.UTF8);
 
+
+                string PeopleWhoWereAtTheGymToday = "Визитов за сегодня: " + AllPeopleWhoVisitTheGymToday().ToString() + " визитов(а)"+ Environment.NewLine;
+
+                File.AppendAllText(path, PeopleWhoWereAtTheGymToday, Encoding.UTF8);
+
                 //string info;
                 //foreach (var item in c.Visits)
                 //{
@@ -89,6 +94,20 @@ namespace GymAdministration
             }
         }
 
+        public int AllPeopleWhoVisitTheGymToday()
+        {
+            int count = 0;
+            using (var c = new Context())
+            {
+                
+                foreach (var item in c.Visits)
+                {
+                    if (item.StartTime >= DateTime.Today)
+                        count++;
+                }
+            }
+            return count;
+        }
 
     }
 }
