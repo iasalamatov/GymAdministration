@@ -12,10 +12,7 @@ namespace GymAdministration
 {
     class ClientViewModel : INotifyPropertyChanged
     {
-        private bool addOrEdit;
-
-        
-
+               
         private Client _client;
         public Client Client
         {
@@ -149,13 +146,11 @@ namespace GymAdministration
                 IsEnabled1 = false;
                 IsEnabled2 = true;
                 IsHereOp = 100;
-                addOrEdit = false;
+                
             }
             else
             {
-                //если был нажат Add
-
-                addOrEdit = true;
+                //если был нажат Add                
                 Client.BirthDate = new DateTime(2000, 1, 1);
                 Client.DateOfValidityFinish = new DateTime(2000, 1, 1);
                 Client.DateOfValidityStart = new DateTime(2000, 1, 1);               
@@ -205,19 +200,24 @@ namespace GymAdministration
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            // Нужна проверка, что заполнены все обязательные поля
+            }            
         }
 
         public void Visit()
         {
-            var repo = Factory.GetRepository();
-            string s = string.Format("{0}", _client.IsHere);
-            MessageBox.Show(s);
+            try
+            {
+                var repo = Factory.GetRepository();
+                string s = string.Format("{0}", _client.IsHere);
 
-            if (_client.IsHere) repo.NewVisitTime(_client);
-            else repo.FinishVisitTime(_client);
+                if (_client.IsHere) repo.NewVisitTime(_client);
+                else repo.FinishVisitTime(_client);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Client.IsHere = false;
+            }
         }
 
     }

@@ -184,7 +184,7 @@ namespace GymAdministration
                 }
                 else
                 {
-                    MessageBox.Show("The card is not active!");
+                    throw new ArgumentException("The card is not active!");
                 }
             }
             else
