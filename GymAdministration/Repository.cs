@@ -92,6 +92,8 @@ namespace GymAdministration
         {
             using(var c = new Context())
             {
+                if (ManagerRemove != null)
+                    ManagerRemove(manager);
                 c.Managers.AddOrUpdate(cl => cl.id,
                     manager);
 
@@ -99,12 +101,17 @@ namespace GymAdministration
 
                 if (ManagerAdded != null)
                     ManagerAdded(manager);
+                
             }
         }
         public void SaveCoach(Coach coach)
         {
             using (var c = new Context())
             {
+
+                if (CoachRemove != null)
+                    CoachRemove(coach);
+
                 c.Coaches.AddOrUpdate(cl => cl.id,
                     coach);
 
