@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -23,6 +24,9 @@ namespace GymAdministration
                     string createText = "Statistics for:" + DateTime.Now.ToLongDateString() + Environment.NewLine;
                     File.WriteAllText(path, createText, Encoding.UTF8);
                 }
+                string Time =  "Обновления на время: " + DateTime.Now.ToShortTimeString() + Environment.NewLine;
+
+                File.AppendAllText(path, Time, Encoding.UTF8);
 
                 string ATOV = "Среднее время посещения зала всеми клиентами: " + AverageTimeOfVisit().ToString() + Environment.NewLine;
 
@@ -41,9 +45,10 @@ namespace GymAdministration
                 //        File.AppendAllText(path, info, Encoding.UTF8);
                 //    }
                 //}
+                MessageBox.Show("Статистика сохранена в файл!");
             }
-
-        }
+        } 
+  
         // Среднее время посещения зала всеми клиентами.
         public double AverageTimeOfVisit()
         {
@@ -52,11 +57,12 @@ namespace GymAdministration
             {
                 foreach (var item in c.Visits)
                 {
-                    if(item.Client.IsHere != true)
+                    //if(item.Client.IsHere != true)
                     {
                         result += (item.FinishTime - item.StartTime).TotalMinutes;
                     }
                 }
+                result = result / c.Visits.Count();
                 return result;
             }
         }
