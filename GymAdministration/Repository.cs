@@ -161,7 +161,7 @@ namespace GymAdministration
                     visit);
                 c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = true;
                 c.SaveChanges();
-                MessageBox.Show(visit.Client.LastName.ToString() + "Зашел в зал");
+                MessageBox.Show(visit.Client.LastName.ToString() + " is in the Gym.");
             }
         }
 
@@ -175,11 +175,12 @@ namespace GymAdministration
              //   visit.Client = c.Clients.FirstOrDefault(p => p.id == client.id);
              //   var lastVisit = c.Visits.LastOrDefault();
                    int llastVisit = lastVisit.Count();
-                   MessageBox.Show(llastVisit.ToString());
+                 //  MessageBox.Show(llastVisit.ToString());
                    var v = lastVisit.ToList();
                    c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = false;
                 v[llastVisit-1].FinishTime = DateTime.Now;
                 c.SaveChanges();
+                MessageBox.Show(v[llastVisit - 1].Client.LastName.ToString() + " left the Gym.");
             }
         }
 
