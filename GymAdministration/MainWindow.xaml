@@ -15,9 +15,9 @@
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -25,16 +25,17 @@
 
             <TextBox x:Name="textBoxId" Margin="10 10" Text="{Binding ID}" Height="20" ToolTip=""/>
 
-            <Button  VerticalAlignment="Bottom" Margin="10 10" Height="20" Width="100" Click="buttonIdFind_Click" Content="Find by card ID"/>
+            <Button  VerticalAlignment="Bottom" Margin="10,0,10,10" Height="20" Width="100" Click="buttonIdFind_Click" Content="Find by card ID"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="10 10" Orientation="Vertical" >
 
             <TextBox x:Name="textBoxName" Margin="10 10" Text="{Binding LastName}" Height="20" />
-            <Button   VerticalAlignment="Bottom" Margin="10 10" Height="20" Width="100" Click="buttonNameFind_Click" Content="Find by lastname"/>
+            <Button   VerticalAlignment="Bottom" Margin="10,0,10,10" Height="20" Width="100" Click="buttonNameFind_Click" Content="Find by Lastname"/>
         </StackPanel>
 
-        <Button   Grid.Row="3" Margin="79,0,35.447,40" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonSetting_Click" Content="Database settings" />
-        <ComboBox Name="FoundByLNameClients" Height="25" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding FoundClients}" MouseDoubleClick="mouseDoubleClickClient" SelectedItem="{Binding SelectedClient}" Margin="15 10"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
+        <Button   Grid.Row="3" Margin="79,100,35.447,10"  Height="20" Width="105" Click="buttonSetting_Click" Content="Database settings " VerticalAlignment="Bottom" />
+        <TextBlock VerticalAlignment="Top" Grid.Row="2" Margin="80,0,0,2" Grid.Column="3" Foreground="#FFF7F2F2" HorizontalAlignment="Left">List of filtered clients:</TextBlock>
+        <ComboBox Name="FoundByLNameClients" Height="20" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding FoundClients}" MouseDoubleClick="mouseDoubleClickClient" SelectedItem="{Binding SelectedClient}" Margin="10,20,10,5"  Padding="5" BorderBrush="LightBlue" BorderThickness="2" Width="219">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -45,7 +46,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button   Grid.Row="3" Grid.Column="2" Margin="80,0,79,40" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonStatustics_Click" Content="Print statistics" />
+        <Button   Grid.Row="3" Grid.Column="2" Margin="80,60,79,10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonStatustics_Click" Content="Print statistics" />
 
 
     </Grid>
