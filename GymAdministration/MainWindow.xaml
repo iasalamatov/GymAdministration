@@ -10,12 +10,12 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="214*"/>
+            <ColumnDefinition Width="219*"/>
             <ColumnDefinition Width="44*"/>
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="Auto"/>
@@ -33,7 +33,8 @@
             <Button   VerticalAlignment="Bottom" Margin="10,0,10,10" Height="20" Width="100" Click="buttonNameFind_Click" Content="Find by Lastname"/>
         </StackPanel>
 
-        <Button   Grid.Row="3" Margin="79,100,35.447,10"  Height="20" Width="105" Click="buttonSetting_Click" Content="Database settings " VerticalAlignment="Bottom" />
+        <Button   Grid.Row="3" Margin="79,80,35.447,10"  Height="20" Width="105" Click="buttonSetting_Click" Content="Database settings " VerticalAlignment="Bottom" />
+        <TextBlock VerticalAlignment="Center" Margin="0" Foreground="#FFF7F2F2" FontSize="16" HorizontalAlignment="Right">Gym Administration System</TextBlock>
         <TextBlock VerticalAlignment="Top" Grid.Row="2" Margin="80,0,0,2" Grid.Column="3" Foreground="#FFF7F2F2" HorizontalAlignment="Left">List of filtered clients:</TextBlock>
         <ComboBox Name="FoundByLNameClients" Height="20" Grid.Row="2" Grid.Column="2" ItemsSource="{Binding FoundClients}" MouseDoubleClick="mouseDoubleClickClient" SelectedItem="{Binding SelectedClient}" Margin="10,20,10,5"  Padding="5" BorderBrush="LightBlue" BorderThickness="2" Width="219">
             <ComboBox.ItemTemplate>
