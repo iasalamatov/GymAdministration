@@ -68,7 +68,7 @@ namespace GymAdministration
                 {
                     var window = new ClientWindow(_client);
                     window.ShowDialog();
-                    MessageBox.Show(ID.ToString());
+                    
                 }
                 else
                 {

@@ -93,7 +93,7 @@ namespace GymAdministration
                 return count;
             }
         }
-
+        //Кол-во людей поситивших зал за сегодня
         public int AllPeopleWhoVisitTheGymToday()
         {
             int count = 0;
