@@ -183,7 +183,9 @@ namespace GymAdministration
 
         public void Save()
         {
-            var repo = Factory.GetRepository();                     
+            var repo = Factory.GetRepository();
+            Client.Manager = SelectedManager;
+            Client.Coach = SelectedCoach;
                 repo.SaveClient(_client);            
             IsEnabled1 = false;
             IsEnabled2 = true;
