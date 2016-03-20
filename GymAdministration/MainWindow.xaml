@@ -21,19 +21,24 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1"  Orientation="Vertical" >
-            <TextBox Name="textBoxId" Text="{Binding ID}" Height="20" Margin="5 3" ToolTip=""></TextBox>
 
-            <Button Margin="10 10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonIdFind_Click" Content="Find by id"/>
-        </StackPanel>       
+            <TextBox x:Name="textBoxId" Text="{Binding ID}" Height="20" Margin="25,3,-16.667,3" ToolTip=""/>
+
+            <Button Margin="86,10,21.333,10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonIdFind_Click" Content="Find by card ID"/>
+        </StackPanel>
         <StackPanel Grid.Row="2"  Orientation="Vertical" >
-            <TextBox Name="textBoxName" Text="{Binding LastName}" Height="20" Margin="5 3"></TextBox>
-            <Button  Margin="10 10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonNameFind_Click">Find by name</Button>
+
+
+            <Button  Margin="327,10,-219.667,10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonNameFind_Click" Content="Find by lastname"/>
+
+
+            <TextBox x:Name="textBoxName" Text="{Binding LastName}" Height="20" Margin="260,3,-252.667,3"/>
 
 
         </StackPanel>
 
-        <Button  Margin="10 10" Grid.Row="3" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonSetting_Click">Setting</Button>
-        <ComboBox Name="FoundByLNameClients" Height="25" Grid.Row="2" ItemsSource="{Binding FoundClients}" MouseDoubleClick="mouseDoubleClickClient" SelectedItem="{Binding SelectedClient}" Grid.Column="1" Margin="5"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">            
+        <Button  Margin="9.667,0,201.667,-76.667" Grid.Row="3" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonSetting_Click" Content="Database settings" Grid.Column="1"/>
+        <ComboBox Name="FoundByLNameClients" Height="25" Grid.Row="3" ItemsSource="{Binding FoundClients}" MouseDoubleClick="mouseDoubleClickClient" SelectedItem="{Binding SelectedClient}" Margin="121,25,95.667,-18"  Padding="5" BorderBrush="LightBlue" BorderThickness="2" Grid.ColumnSpan="2">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

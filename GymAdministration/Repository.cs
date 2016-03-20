@@ -171,32 +171,32 @@ namespace GymAdministration
             }
         }
 
-        public void SaveStatisticsToTxt()
-        {
-            using (var c = new Context())
-            {
-                string filename = "stat_" + DateTime.Now.ToLongDateString();
-                string str = "..//..//" + filename + ".txt";
-                string path = @str;
+        //public void SaveStatisticsToTxt()
+        //{
+        //    using (var c = new Context())
+        //    {
+        //        string filename = "stat_" + DateTime.Now.ToLongDateString();
+        //        string str = "..//..//" + filename + ".txt";
+        //        string path = @str;
 
-                if (!File.Exists(path))
-                {
-                    string createText = "Statistics for:" + DateTime.Now.ToLongDateString() + Environment.NewLine;
-                    File.WriteAllText(path, createText, Encoding.UTF8);
-                }
+        //        if (!File.Exists(path))
+        //        {
+        //            string createText = "Statistics for:" + DateTime.Now.ToLongDateString() + Environment.NewLine;
+        //            File.WriteAllText(path, createText, Encoding.UTF8);
+        //        }
 
-                string info;
-                foreach (var item in c.Visits)
-                {
-                    if (item.StartTime >= DateTime.Today)
-                    {
-                        info = item.Client.LastName + " " + item.Client.FirstName + ": " + item.StartTime.ToString() + " " + item.FinishTime.ToString();
-                        File.AppendAllText(path, info, Encoding.UTF8);
-                    }
-                }
-            }
+        //        string info;
+        //        foreach (var item in c.Visits)
+        //        {
+        //            if (item.StartTime >= DateTime.Today)
+        //            {
+        //                info = item.Client.LastName + " " + item.Client.FirstName + ": " + item.StartTime.ToString() + " " + item.FinishTime.ToString();
+        //                File.AppendAllText(path, info, Encoding.UTF8);
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
 
         public void RemoveManager(Manager manager)
         {
