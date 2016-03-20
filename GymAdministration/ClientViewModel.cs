@@ -189,9 +189,10 @@ namespace GymAdministration
         {
             try
             {
-                if (String.IsNullOrEmpty(Client.FirstName) && String.IsNullOrEmpty(Client.LastName)) throw new Exception("First name or Last name can not be empty.");
-                
-                if (Client.DateOfValidityFinish < Client.DateOfValidityStart && Client.BirthDate > DateTime.Now) throw new ArgumentException("Wrong date.");
+                if (String.IsNullOrEmpty(Client.FirstName)) throw new ArgumentException("First name can not be empty.");
+                if (String.IsNullOrEmpty(Client.LastName)) throw new ArgumentException("Last name can not be empty.");               
+                if (Client.DateOfValidityFinish <= Client.DateOfValidityStart ) throw new ArgumentException("Date of Finish can not be erlier Date of Start.");
+                if ( Client.BirthDate >= DateTime.Now) throw new ArgumentException("Wrong Birth date.");
                 Client.Manager = SelectedManager;
                 Client.Coach = SelectedCoach;
                 var repo = Factory.GetRepository();
@@ -203,7 +204,7 @@ namespace GymAdministration
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             // Нужна проверка, что заполнены все обязательные поля
