@@ -14,6 +14,11 @@ namespace GymAdministration
    public class Repository
     {
         public event Action<Client> ClientAdded;
+        public event Action<Coach> CoachAdded;
+        public event Action<Manager> ManagerAdded;
+
+        public event Action<Coach> CoachRemove;
+        public event Action<Manager> ManagerRemove;
 
         public Client FindClient(int id)
         {
@@ -89,6 +94,9 @@ namespace GymAdministration
                     manager);
 
                 c.SaveChanges();
+
+                if (ManagerAdded != null)
+                    ManagerAdded(manager);
             }
         }
         public void SaveCoach(Coach coach)
@@ -99,6 +107,9 @@ namespace GymAdministration
                     coach);
 
                 c.SaveChanges();
+
+                if (CoachAdded != null)
+                    CoachAdded(coach);
             }
         }
 
@@ -150,6 +161,7 @@ namespace GymAdministration
                     visit);
                 c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = true;
                 c.SaveChanges();
+                MessageBox.Show(visit.Client.LastName.ToString() + "Зашел в зал");
             }
         }
 
@@ -206,6 +218,9 @@ namespace GymAdministration
                 var man = c.Managers.FirstOrDefault(m => m.id == manager.id);
                 c.Managers.Remove(man);
                 c.SaveChanges();
+
+                if (ManagerRemove != null)
+                    ManagerRemove(manager);
             }
         }
 
@@ -216,6 +231,9 @@ namespace GymAdministration
             {
                 c.Coaches.Remove(coach);
                 c.SaveChanges();
+
+                if (CoachRemove != null)
+                    CoachRemove(coach);
             }
         }
 

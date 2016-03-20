@@ -120,6 +120,10 @@ namespace GymAdministration
             _isEnabled1 = false;
 
             rep.ClientAdded += cl => Clients.Add(cl);
+            rep.ManagerAdded += mn => Managers.Add(mn);
+            rep.CoachAdded += co => Coaches.Add(co);
+            rep.CoachRemove += co => Coaches.Remove(co);
+            rep.ManagerRemove += mn => Managers.Remove(mn);
         }
 
         private bool _isEnabled1;
