@@ -19,7 +19,7 @@ namespace GymAdministrationTest
         {
             var repo = new Repository();
             string _lastName = "Ignash";
-          //  int count = 0;
+      
             int expectedCount = 1;
 
             var lst = repo.FindAllClientsByLastName(_lastName);
