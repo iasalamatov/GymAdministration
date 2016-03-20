@@ -19,6 +19,7 @@ namespace GymAdministration
 
         public event Action<Coach> CoachRemove;
         public event Action<Manager> ManagerRemove;
+        public event Action<Client> ClientRemove;
 
         
 
@@ -35,6 +36,10 @@ namespace GymAdministration
         {
             using (var c = new Context())
             {
+
+                if (ClientRemove != null)
+                    ClientRemove(client);
+
                 c.Clients.AddOrUpdate(cl => cl.id,
                     client);
 
@@ -191,7 +196,7 @@ namespace GymAdministration
                 }
                 else
                 {
-                    throw new ArgumentException("The card is not active!");
+                    MessageBox.Show("The card is not active!");
                 }
             }
             else

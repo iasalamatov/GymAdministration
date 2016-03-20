@@ -18,7 +18,7 @@ namespace GymAdministrationTest
         public void FindAllClientsByLastNameTest()
         {
             var repo = new Repository();
-            string _lastName = "Ignash";
+            string _lastName = "Ignashkina";
             int expectedCount = 1;
 
             var lst = repo.FindAllClientsByLastName(_lastName);
@@ -32,7 +32,7 @@ namespace GymAdministrationTest
         {
             var repo = new Repository();
             string lastName = "Salamatov";
-            int _expectedCount = 4;
+            int _expectedCount = 0;
            
             var lst = repo.FindAllClientsByLastName(lastName);
             int _count = lst.Count();
