@@ -20,19 +20,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1"  Orientation="Vertical" Background="#FFD44242">
+        <StackPanel Grid.Row="1"  Orientation="Vertical" >
             <TextBox Name="textBoxId" Text="{Binding ID}" Height="20" Margin="5 3" ToolTip=""></TextBox>
 
             <Button Margin="10 10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonIdFind_Click" Content="Find by id"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="1" Background="white" Orientation="Horizontal">
-
-            <TextBlock HorizontalAlignment="Center" Width="200" FontWeight="Bold" Margin="5 3">Info</TextBlock>
-
-        </StackPanel>
-
-        <StackPanel Grid.Row="2"  Orientation="Vertical" Background="#FFD44242">
+        </StackPanel>       
+        <StackPanel Grid.Row="2"  Orientation="Vertical" >
             <TextBox Name="textBoxName" Text="{Binding LastName}" Height="20" Margin="5 3"></TextBox>
             <Button  Margin="10 10" VerticalAlignment="Bottom" Height="20" Width="100" Click="buttonNameFind_Click">Find by name</Button>
 
