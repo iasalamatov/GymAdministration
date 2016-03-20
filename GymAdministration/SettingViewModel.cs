@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GymAdministration.DataBase;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace GymAdministration
 {
@@ -154,40 +155,58 @@ namespace GymAdministration
 
         public void SaveManager()
         {
-            var rep = Factory.GetRepository();
-            var manager = new Manager();
-            if (_addOrEdit)
-            {                                
-                    manager.FirstName = ManagerFirstName;
-                    manager.LastName = ManagerLastName;                               
-            }
-            else
+            try
             {
-                SelectedManager.FirstName = ManagerFirstName;
-                SelectedManager.LastName = ManagerLastName;
-                manager=_selectedManager;
+                if (String.IsNullOrEmpty(ManagerFirstName)) throw new ArgumentException("First name can not be empty.");
+                if (String.IsNullOrEmpty(ManagerLastName)) throw new ArgumentException("Last name can not be empty.");  
+                var rep = Factory.GetRepository();
+                var manager = new Manager();
+                if (_addOrEdit)
+                {
+                    manager.FirstName = ManagerFirstName;
+                    manager.LastName = ManagerLastName;
+                }
+                else
+                {
+                    SelectedManager.FirstName = ManagerFirstName;
+                    SelectedManager.LastName = ManagerLastName;
+                    manager = _selectedManager;
+                }
+                IsEnabled1 = false;
+                rep.SaveManager(manager);
             }
-            IsEnabled1 = false;
-            rep.SaveManager(manager);
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void SaveCoach()
         {
-            var rep = Factory.GetRepository();
-            var coach = new Coach();
-            if (_addOrEdit)
+            try
             {
-                coach.FirstName = CoachFirstName;
-                coach.LastName = CoachLastName;
+                if (String.IsNullOrEmpty(CoachFirstName)) throw new ArgumentException("First name can not be empty.");
+                if (String.IsNullOrEmpty(CoachLastName)) throw new ArgumentException("Last name can not be empty.");
+                var rep = Factory.GetRepository();
+                var coach = new Coach();
+                if (_addOrEdit)
+                {
+                    coach.FirstName = CoachFirstName;
+                    coach.LastName = CoachLastName;
+                }
+                else
+                {
+                    SelectedCoach.FirstName = CoachFirstName;
+                    SelectedCoach.LastName = CoachLastName;
+                    coach = _selectedCoach;
+                }
+                IsEnabled1 = false;
+                rep.SaveCoach(coach);
             }
-            else
+            catch (Exception ex)
             {
-                SelectedCoach.FirstName = CoachFirstName;
-                SelectedCoach.LastName = CoachLastName;
-                coach = _selectedCoach;
+                MessageBox.Show(ex.Message,"Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            IsEnabled1 = false;
-            rep.SaveCoach(coach);
         }
 
         private bool _addOrEdit;
