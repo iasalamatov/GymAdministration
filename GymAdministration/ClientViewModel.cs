@@ -13,7 +13,9 @@ namespace GymAdministration
     class ClientViewModel : INotifyPropertyChanged
     {
         private bool addOrEdit;
-      
+
+        private Client client;
+
         private Client _client;
         public Client Client
         {
@@ -136,12 +138,14 @@ namespace GymAdministration
 
 
 
-        public ClientViewModel(Client client)
+        public ClientViewModel(Client cl)
         {
             _client = new Client();
             if (client != null)
             {
-                Client = client;
+                Client = cl;
+                SelectedManager = Client.Manager;
+                SelectedCoach = Client.Coach;
                 IsEnabled1 = false;
                 IsEnabled2 = true;
                 IsHereOp = 100;
@@ -183,9 +187,11 @@ namespace GymAdministration
 
         public void Save()
         {
-            var repo = Factory.GetRepository();
+            
             Client.Manager = SelectedManager;
             Client.Coach = SelectedCoach;
+            var repo = Factory.GetRepository();
+            
                 repo.SaveClient(_client);            
             IsEnabled1 = false;
             IsEnabled2 = true;
