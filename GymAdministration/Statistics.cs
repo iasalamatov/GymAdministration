@@ -28,7 +28,7 @@ namespace GymAdministration
 
                 File.AppendAllText(path, Time, Encoding.UTF8);
 
-                string ATOV = "Среднее время посещения зала всеми клиентами: " + AverageTimeOfVisit().ToString() + Environment.NewLine;
+                string ATOV = "Среднее время посещения зала всеми клиентами: " + AverageTimeOfVisit() + Environment.NewLine;
 
                 File.AppendAllText(path, ATOV, Encoding.UTF8);
 
@@ -50,20 +50,27 @@ namespace GymAdministration
         } 
   
         // Среднее время посещения зала всеми клиентами.
-        public double AverageTimeOfVisit()
+        public string AverageTimeOfVisit()
         {
             double result = 0;
+            int cnt = 0;
             using (var c = new Context())
             {
+                DateTime dt = new DateTime(2000, 04, 04);
                 foreach (var item in c.Visits)
                 {
-                    //if(item.Client.IsHere != true)
+                    if(item.FinishTime != dt)
                     {
                         result += (item.FinishTime - item.StartTime).TotalMinutes;
+                        cnt++;
                     }
                 }
-                result = result / c.Visits.Count();
-                return result;
+
+                result = result / cnt;
+                int hours = (int)result / 60;
+                int minutes = (int)result - (hours * 60);
+                string str = hours.ToString() + " " + "часов(а)" + " " + minutes.ToString() + " - " + "минут(ы)";
+                return str;
             }
         }
 
