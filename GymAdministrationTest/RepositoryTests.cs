@@ -27,7 +27,7 @@ namespace GymAdministrationTest
             Assert.AreEqual(expectedCount, count);
         }
 
-
+        [TestMethod]
         public void FindAllClientsByLastNameTest2()
         {
             var repo = new Repository();
