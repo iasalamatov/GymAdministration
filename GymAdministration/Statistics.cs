@@ -24,15 +24,23 @@ namespace GymAdministration
                     File.WriteAllText(path, createText, Encoding.UTF8);
                 }
 
-                string info;
-                foreach (var item in c.Visits)
-                {
-                    if (item.StartTime >= DateTime.Today)
-                    {
-                        info = item.Client.LastName + " " + item.Client.FirstName + ": " + item.StartTime.ToString() + " " + item.FinishTime.ToString();
-                        File.AppendAllText(path, info, Encoding.UTF8);
-                    }
-                }
+                string ATOV = "Среднее время посещения зала всеми клиентами: " + AverageTimeOfVisit().ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, ATOV, Encoding.UTF8);
+
+                string PeopleInTheGym = "Количество человек в зале: " + TheAmountOfPeopleInTheGym().ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, PeopleInTheGym, Encoding.UTF8);
+
+                //string info;
+                //foreach (var item in c.Visits)
+                //{
+                //    if (item.StartTime >= DateTime.Today)
+                //    {
+                //        info = item.Client.LastName + " " + item.Client.FirstName + ": " + item.StartTime.ToString() + " " + item.FinishTime.ToString();
+                //        File.AppendAllText(path, info, Encoding.UTF8);
+                //    }
+                //}
             }
 
         }
@@ -68,7 +76,6 @@ namespace GymAdministration
             }
         }
 
-        
 
     }
 }
