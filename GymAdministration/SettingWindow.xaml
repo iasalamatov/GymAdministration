@@ -41,10 +41,19 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label >All managers</Label>
-                    <ListBox Grid.Row="1" Margin="5" Name="listBoxManagers" ItemsSource="{Binding Managers}" DisplayMemberPath="LastName"
+                    <ListBox Grid.Row="1" Margin="5" Name="listBoxManagers" ItemsSource="{Binding Managers}"
                  SelectedItem="{Binding SelectedManager}" >
-                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 0"  Text="{Binding FirstName}" />
+                                    <TextBlock Margin="2 0"  Text="{ Binding LastName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
+
+                  
 
                     <StackPanel Grid.Column="1" Grid.Row="1">
                         <Button Height="20" Margin="0 3" Click="ButtonRemoveManager_Click"  >Remove</Button>
@@ -70,11 +79,17 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label >All coaches</Label>
-                    <ListBox Grid.Row="1" Margin="5" Name="listBoxCoaches" ItemsSource="{Binding Coaches}" DisplayMemberPath="LastName"
+                    <ListBox Grid.Row="1" Margin="5" Name="listBoxCoaches" ItemsSource="{Binding Coaches}" 
                  SelectedItem="{Binding SelectedCoach}" >
-                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 0"  Text="{Binding FirstName}" />
+                                    <TextBlock Margin="2 0"  Text="{ Binding LastName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-
                     <StackPanel Grid.Column="1" Grid.Row="1">
                         <Button Height="20" Margin="0 3" Click="ButtonRemoveCoach_Click" >Remove</Button>
                         <Button  Height="20" Margin="0 3" Click="ButtonEditCoach_Click" >Edit</Button>
@@ -101,11 +116,18 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label >All clients</Label>                   
-                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}"   DisplayMemberPath="LastName"
+                    <Label >All clients</Label>
+                    <ListBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Name="listBoxClients" ItemsSource="{Binding Clients}" 
                  SelectedItem="{Binding SelectedClient}" >
-                        
-                    </ListBox>                  
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="2 0"  Text="{Binding FirstName}" />
+                                    <TextBlock Margin="2 0"  Text="{ Binding LastName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <Button Grid.Row="2" Height="25" Margin="0 3" Click="ButtonAddClient_Click" >Add</Button>
                     <Button Grid.Row="2" Grid.Column="1" Margin="0,3"  Click="ButtonShowClient_Click">Show</Button>
                     

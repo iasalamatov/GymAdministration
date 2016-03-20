@@ -27,7 +27,7 @@ namespace GymAdministration
 
 
         private ObservableCollection<Coach> _coaches;
-        private Manager _selectedCoach;
+        private Coach _selectedCoach;
 
         public ObservableCollection<Coach> Coaches
         {
@@ -38,7 +38,7 @@ namespace GymAdministration
                 OnPropertyChanged("Coaches");
             }
         }
-        public Manager SelectedCoach
+        public Coach SelectedCoach
         {
             get
             {
@@ -110,6 +110,22 @@ namespace GymAdministration
             }
         }
 
+        private int _isHereOp;
+        public int IsHereOp
+        {
+            get { return _isHereOp; }
+
+            set
+            {
+                if (_isHereOp == value)
+                {
+                    return;
+                }
+                _isHereOp = value;
+                OnPropertyChanged("IsHereOp");
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -128,6 +144,7 @@ namespace GymAdministration
                 Client = client;
                 IsEnabled1 = false;
                 IsEnabled2 = true;
+                IsHereOp = 100;
                 addOrEdit = false;
             }
             else
@@ -154,9 +171,8 @@ namespace GymAdministration
 
             IsEnabled2 = false;
             IsEnabled1 = true;
+            IsHereOp = 0;
             
-
-
         }
 
 
@@ -171,6 +187,7 @@ namespace GymAdministration
                 repo.SaveClient(_client);            
             IsEnabled1 = false;
             IsEnabled2 = true;
+            IsHereOp = 100;
 
             // Нужна проверка, что заполнены все обязательные поля
         }

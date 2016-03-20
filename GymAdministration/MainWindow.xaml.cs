@@ -43,7 +43,12 @@ namespace GymAdministration
 
         private void buttonNameFind_Click(object sender, RoutedEventArgs e)
         {
-           // _viewModel.FindByName();
+             _viewModel.FindByLastName();
+        }
+
+        private void mouseDoubleClickClient(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ShowActiveClient();
         }
         
     }
