@@ -31,24 +31,35 @@
 
         <TextBox Grid.Column="1" Text="{Binding Client.FirstName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Client.LastName}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
-        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding Client.BirthDate}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
+        <DatePicker Grid.Row="2" Grid.Column="1"  SelectedDate="{Binding Client.BirthDate}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
         <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding Client.DateOfValidityStart}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
         <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding Client.DateOfValidityFinish}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></DatePicker>
 
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Client.PhoneNumber}" Margin="5 3" IsEnabled="{Binding IsEnabled1}" ></TextBox>
-        <Expander Grid.Row="6" Grid.Column="1" Margin="5" Header="{Binding Client.Manager}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
-            <ListBox  Name="listBoxManagers"  MaxHeight="400" ItemsSource="{Binding Managers}" DisplayMemberPath="LastName" ScrollViewer.VerticalScrollBarVisibility="Visible">
-            </ListBox>
-        </Expander>
+        <ComboBox Name="ManagersComboBox" Height="20" Grid.Row="6" Grid.Column="1" ItemsSource="{Binding Managers}" SelectedItem="{Binding SelectedManager}" IsEnabled="{Binding IsEnabled1}"  Margin="5 3"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="2 0"  Text="{Binding FirstName}" />
+                        <TextBlock Margin="2 0"  Text="{ Binding LastName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
-        <Expander Grid.Row="7" Grid.Column="1" Margin="5" Header="{Binding Client.Coach}" IsEnabled="{Binding IsEnabled1}"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
-            <ListBox  Name="listBoxCouches"  MaxHeight="400" ItemsSource="{Binding Coaches}" DisplayMemberPath="LastName" ScrollViewer.VerticalScrollBarVisibility="Visible">
-
-            </ListBox>
-        </Expander>
+        <ComboBox Name="CoachesComboBox" Height="20" Grid.Row="7" Grid.Column="1" ItemsSource="{Binding Coaches}" SelectedItem="{Binding SelectedCoach}" IsEnabled="{Binding IsEnabled1}"  Margin="5 3"  Padding="5" BorderBrush="LightBlue" BorderThickness="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="2 0"  Text="{Binding FirstName}" />
+                        <TextBlock Margin="2 0"  Text="{ Binding LastName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom"  Height="25" Width="120" Click="ButtonEdit_Click" IsEnabled="{Binding IsEnabled2}" >Edit</Button>
-        <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom" Grid.Column="1" Height="25" Width="120" Click="ButtonSave_Click" IsEnabled="{Binding IsEnabled1}" >Save</Button>      
-        <ToggleButton Grid.Row="9" Grid.Column="1" Margin="0 10" Height="25" Width="25" IsChecked="{Binding Client.IsHere}" Click="ToggleButton_Clicked"  Background="#FFB63D3D" ></ToggleButton>
+        <Button Grid.Row="8" Margin="0 10" VerticalAlignment="Bottom" Grid.Column="1" Height="25" Width="120" Click="ButtonSave_Click" IsEnabled="{Binding IsEnabled1}" >Save</Button>
+        <ToggleButton Grid.Row="9" Grid.Column="1" Margin="0 10" Height="25" Width="25" IsChecked="{Binding Client.IsHere}" IsEnabled="{Binding IsEnabled2}" Opacity="{Binding IsHereOp}" Click="ToggleButton_Clicked"  Background="#FFB63D3D" ></ToggleButton>
     
     </Grid>
 </Window>

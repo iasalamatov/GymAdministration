@@ -40,7 +40,7 @@ namespace GymAdministration
         }
 
         private ObservableCollection<Coach> _coaches;
-        private Manager _selectedCoach;
+        private Coach _selectedCoach;
 
         public ObservableCollection<Coach> Coaches
         {
@@ -51,7 +51,7 @@ namespace GymAdministration
                 OnPropertyChanged("Coaches");
             }
         }
-        public Manager SelectedCoach
+        public Coach SelectedCoach
         {
             get
             {
@@ -90,6 +90,7 @@ namespace GymAdministration
             }
         }
 
+       
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {
@@ -104,7 +105,7 @@ namespace GymAdministration
         
         private async void LoadData()
         {
-            var rep = new Repository();
+            var rep = Factory.GetRepository();
 
             {
                 var dataClient = await rep.AllClients();
@@ -116,11 +117,29 @@ namespace GymAdministration
             var dataCoaches = await rep.AllCoaches();
             Coaches = new ObservableCollection<Coach>(dataCoaches);
 
+            _isEnabled1 = false;
+
             rep.ClientAdded += cl => Clients.Add(cl);
         }
 
+        private bool _isEnabled1;
+        public bool IsEnabled1
+        {
+            get { return _isEnabled1; }
 
-        public void EditActiveClient()
+            set
+            {
+                if (_isEnabled1 == value)
+                {
+                    return;
+                }
+                _isEnabled1 = value;
+                OnPropertyChanged("IsEnabled1");
+            }
+        }
+
+
+        public void ShowActiveClient()
         {
             if (SelectedClient != null)
             {
@@ -131,16 +150,12 @@ namespace GymAdministration
 
         public void SaveManager()
         {
-            var rep = new Repository();
+            var rep = Factory.GetRepository();
             var manager = new Manager();
             if (_addOrEdit)
-            {
-                
-                
+            {                                
                     manager.FirstName = ManagerFirstName;
-                    manager.LastName = ManagerLastName;
-                
-                
+                    manager.LastName = ManagerLastName;                               
             }
             else
             {
@@ -148,19 +163,61 @@ namespace GymAdministration
                 SelectedManager.LastName = ManagerLastName;
                 manager=_selectedManager;
             }
+            IsEnabled1 = false;
             rep.SaveManager(manager);
+        }
+
+        public void SaveCoach()
+        {
+            var rep = Factory.GetRepository();
+            var coach = new Coach();
+            if (_addOrEdit)
+            {
+                coach.FirstName = CoachFirstName;
+                coach.LastName = CoachLastName;
+            }
+            else
+            {
+                SelectedCoach.FirstName = CoachFirstName;
+                SelectedCoach.LastName = CoachLastName;
+                coach = _selectedCoach;
+            }
+            IsEnabled1 = false;
+            rep.SaveCoach(coach);
         }
 
         private bool _addOrEdit;
 
-        public void EditManager()
+        public void Edit()
         {
             _addOrEdit = false;
+            IsEnabled1 = true;
         }
 
-        public void AddManager()
+        public void Add()
         {
             _addOrEdit = true;
+            IsEnabled1 = true;
+        }
+
+        public void RemoveManager()
+        {
+            if (SelectedManager != null)
+            {
+                var repo = Factory.GetRepository();
+                repo.RemoveManager(SelectedManager);
+            }
+
+        }
+
+        public void RemoveCoach()
+        {
+            if (SelectedCoach != null)
+            {
+                var repo = Factory.GetRepository();
+                repo.RemoveCoach(SelectedCoach);
+            }
+
         }
 
         

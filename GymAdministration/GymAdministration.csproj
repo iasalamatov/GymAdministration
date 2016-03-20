@@ -65,6 +65,7 @@
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Visit.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Migrations\201603162147237_addVisit.cs" />
     <Compile Include="Migrations\201603162147237_addVisit.Designer.cs">

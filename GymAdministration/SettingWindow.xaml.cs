@@ -33,20 +33,20 @@ namespace GymAdministration
             window.ShowDialog();
         }
 
-        private void ButtonEditClient_Click(object sender, RoutedEventArgs e)
+        private void ButtonShowClient_Click(object sender, RoutedEventArgs e)
         {
-            
+            _viewModel.ShowActiveClient();
         }
 
         private void ButtonRemoveManager_Click(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.RemoveManager();
         }
 
        
         private void ButtonAddManager_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.AddManager();
+            _viewModel.Add();
         }
 
         private void ButtonSaveManager_Click(object sender, RoutedEventArgs e)
@@ -54,14 +54,31 @@ namespace GymAdministration
             _viewModel.SaveManager();
         }
 
-        private void ButtonRemoveVisit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void ButtonEditManager_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.EditManager();
+            _viewModel.Edit();
+        }
+
+        private void ButtonRemoveCoach_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.RemoveCoach();
+        }
+
+        private void ButtonEditCoach_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Edit();
+        }
+
+        private void ButtonAddCoach_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Add();
+        }
+
+        private void ButtonSaveCoach_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.SaveCoach();
         }
     }
 }

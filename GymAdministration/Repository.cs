@@ -14,6 +14,7 @@ namespace GymAdministration
    public class Repository
     {
         public event Action<Client> ClientAdded;
+
         public Client FindClient(int id)
         {
             using (var c = new Context())
@@ -31,6 +32,7 @@ namespace GymAdministration
                     client);
 
                 c.SaveChanges();
+
                 if (ClientAdded != null)
                     ClientAdded(client);
             }
@@ -89,6 +91,17 @@ namespace GymAdministration
                 c.SaveChanges();
             }
         }
+        public void SaveCoach(Coach coach)
+        {
+            using (var c = new Context())
+            {
+                c.Coaches.AddOrUpdate(cl => cl.id,
+                    coach);
+
+                c.SaveChanges();
+            }
+        }
+
         // Все тренеры
         public List<Coach> Coaches()
         {
@@ -144,13 +157,16 @@ namespace GymAdministration
         {
             using (var c = new Context())
             {
-                //   var lastVisit = from item in client.Visits
-                //                   where (item.id == client.Visits.Count - 1)
-                //                   select item;
-
-                var lastVisit = client.Visits.LastOrDefault();
-
-                lastVisit.FinishTime = DateTime.Now;
+                   var lastVisit = from item in c.Visits
+                                   where (item.Client.id == client.id)
+                                   select item;
+             //   visit.Client = c.Clients.FirstOrDefault(p => p.id == client.id);
+             //   var lastVisit = c.Visits.LastOrDefault();
+                   int llastVisit = lastVisit.Count();
+                   MessageBox.Show(llastVisit.ToString());
+                   var v = lastVisit.ToList();
+                   c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = false;
+                v[llastVisit-1].FinishTime = DateTime.Now;
                 c.SaveChanges();
             }
         }
@@ -187,13 +203,14 @@ namespace GymAdministration
 
             using (var c = new Context())
             {
-                c.Managers.Remove(manager);
+                var man = c.Managers.FirstOrDefault(m => m.id == manager.id);
+                c.Managers.Remove(man);
                 c.SaveChanges();
             }
         }
 
         public void RemoveCoach(Coach coach)
-        {
+        { 
 
             using (var c = new Context())
             {
@@ -201,6 +218,7 @@ namespace GymAdministration
                 c.SaveChanges();
             }
         }
+
     }
 }
 
