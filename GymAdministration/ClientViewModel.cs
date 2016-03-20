@@ -14,7 +14,7 @@ namespace GymAdministration
     {
         private bool addOrEdit;
 
-        private Client client;
+        
 
         private Client _client;
         public Client Client
@@ -141,7 +141,7 @@ namespace GymAdministration
         public ClientViewModel(Client cl)
         {
             _client = new Client();
-            if (client != null)
+            if (cl != null)
             {
                 Client = cl;
                 SelectedManager = Client.Manager;
