@@ -20,6 +20,8 @@ namespace GymAdministration
         public event Action<Coach> CoachRemove;
         public event Action<Manager> ManagerRemove;
 
+        
+
         public Client FindClient(int id)
         {
             using (var c = new Context())
@@ -151,17 +153,43 @@ namespace GymAdministration
 
         public void NewVisitTime(Client client)
         {
-            using (var c = new Context())
+            int clients = 0;
+            using(var c = new Context())
             {
-                var visit = new Visit();
-                visit.StartTime = DateTime.Now;
-                visit.FinishTime = new DateTime(2000, 04, 04);
-                visit.Client = c.Clients.FirstOrDefault(p => p.id == client.id);
-                c.Visits.AddOrUpdate(p => p.id,
-                    visit);
-                c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = true;
-                c.SaveChanges();
-                MessageBox.Show(visit.Client.LastName.ToString() + " is in the Gym.");
+                foreach (var item in c.Clients)
+	{
+        if (item.IsHere == true)
+            clients++;
+	}
+
+            }
+            if (clients < 2)
+            {
+                if (client.DateOfValidityStart <= DateTime.Today && client.DateOfValidityFinish >= DateTime.Today)
+                {
+                    using (var c = new Context())
+                    {
+
+                        var visit = new Visit();
+                        visit.StartTime = DateTime.Now;
+                        visit.FinishTime = new DateTime(2000, 04, 04);
+                        visit.Client = c.Clients.FirstOrDefault(p => p.id == client.id);
+                        c.Visits.AddOrUpdate(p => p.id,
+                            visit);
+                        c.Clients.FirstOrDefault(p => p.id == client.id).IsHere = true;
+                        
+                        c.SaveChanges();
+                        MessageBox.Show(visit.Client.LastName.ToString() + " is in the Gym.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The card is not active!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The Gym is full, waiting for free place.");
             }
         }
 
