@@ -203,8 +203,8 @@ namespace GymAdministration
         public void Visit()
         {
             var repo = Factory.GetRepository();
-            string s = string.Format("{0}", _client.IsHere);
-            MessageBox.Show(s);
+           // string s = string.Format("{0}", _client.IsHere);
+           // MessageBox.Show(s);
 
             if (_client.IsHere) repo.NewVisitTime(_client);
             else repo.FinishVisitTime(_client);
