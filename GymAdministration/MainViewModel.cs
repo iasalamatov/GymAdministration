@@ -78,7 +78,7 @@ namespace GymAdministration
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wrong format of ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
