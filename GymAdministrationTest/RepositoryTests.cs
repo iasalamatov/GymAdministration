@@ -31,13 +31,13 @@ namespace GymAdministrationTest
         public void FindAllClientsByLastNameTest2()
         {
             var repo = new Repository();
-            string _lastName = "Salamatov";
-            int expectedCount = 4;
+            string lastName = "Salamatov";
+            int _expectedCount = 4;
+           
+            var lst = repo.FindAllClientsByLastName(lastName);
+            int _count = lst.Count();
 
-            var lst = repo.FindAllClientsByLastName(_lastName);
-            int count = lst.Count();
-
-            Assert.AreEqual(expectedCount, count);
+            Assert.AreEqual(_expectedCount, _count);
         }
     }
 }
