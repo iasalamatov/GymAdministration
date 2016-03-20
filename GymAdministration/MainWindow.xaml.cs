@@ -50,6 +50,11 @@ namespace GymAdministration
         {
             _viewModel.ShowActiveClient();
         }
+
+        private void buttonStatustics_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         
     }
 }
