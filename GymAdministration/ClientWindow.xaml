@@ -21,7 +21,18 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock VerticalAlignment="Center" >Status</TextBlock>
-        <ToggleButton  Grid.Column="1" Margin="0 4" Height="20" Width="50" IsChecked="{Binding Client.IsHere}" IsEnabled="{Binding IsEnabled2}" Opacity="{Binding IsHereOp}" Click="ToggleButton_Clicked"  Background="#FFB63D3D" ></ToggleButton>
+        <ToggleButton  Grid.Column="1" Margin="0 4" Height="20" IsChecked="{Binding Client.IsHere}"  IsEnabled="{Binding IsEnabled2}" Opacity="{Binding IsHereOp}" Click="ToggleButton_Clicked"  Background="#FFB63D3D">
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Setter Property="Content" Value="Out"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Content" Value="In the gym"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
         <TextBlock VerticalAlignment="Center" Grid.Row="1">First name</TextBlock>
         <TextBlock VerticalAlignment="Center" Grid.Row="2">Last name</TextBlock>
         <TextBlock VerticalAlignment="Center" Grid.Row="3">Birthdate</TextBlock>
