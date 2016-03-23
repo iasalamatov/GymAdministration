@@ -40,9 +40,9 @@ namespace GymAdministration
                 if (ClientRemove != null)
                     ClientRemove(client);
 
-                var man = c.Managers.FirstOrDefault(m => m.id == client.Manager.id);
+               // var man = c.Managers.FirstOrDefault(m => m.id == client.Manager.id);
               //  MessageBox.Show(man.ToString());
-                client.Manager = man;
+                //client.Manager = man;
                 c.Clients.AddOrUpdate(cl => cl.id,
                     client);
 
