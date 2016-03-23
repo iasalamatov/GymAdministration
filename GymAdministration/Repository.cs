@@ -40,6 +40,9 @@ namespace GymAdministration
                 if (ClientRemove != null)
                     ClientRemove(client);
 
+                var man = c.Managers.FirstOrDefault(m => m.id == client.Manager.id);
+              //  MessageBox.Show(man.ToString());
+                client.Manager = man;
                 c.Clients.AddOrUpdate(cl => cl.id,
                     client);
 
@@ -257,6 +260,11 @@ namespace GymAdministration
             using (var c = new Context())
             {
                 var man = c.Managers.FirstOrDefault(m => m.id == manager.id);
+                foreach (var item in c.Clients)
+                {
+                    if (item.Manager == man)
+                        item.Manager = null;
+                }
                 c.Managers.Remove(man);
                 c.SaveChanges();
 
@@ -270,6 +278,11 @@ namespace GymAdministration
 
             using (var c = new Context())
             {
+                foreach (var item in c.Clients)
+                {
+                    if (item.Coach == coach)
+                        item.Coach = null;
+                }
                 c.Coaches.Remove(coach);
                 c.SaveChanges();
 

@@ -53,7 +53,8 @@ namespace GymAdministration
 
         private void LoadData()
         {
-
+            var repo = Factory.GetRepository();
+           repo.FindClient(0);
             //Будет загружаться всякая инфа
         }
 
