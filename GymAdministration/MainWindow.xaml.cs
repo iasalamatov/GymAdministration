@@ -53,8 +53,11 @@ namespace GymAdministration
 
         private void buttonStatustics_Click(object sender, RoutedEventArgs e)
         {
-
+            var stat = new Statistics();
+            stat.SaveStatisticsToTxt();
         }
+
+   
         
     }
 }
